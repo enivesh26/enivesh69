@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>eNivesh — Live Market Ticker</title>
+
+<!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  HOW TO EMBED ON enivesh.in                                 ║
+  ║  ─────────────────────────────────────────────────────────  ║
+  ║  OPTION A — Drop-in replacement (recommended)               ║
+  ║    1. Open your website's HTML/template file                ║
+  ║    2. Find the old ticker block (look for id="ticker" or    ║
+  ║       class="ticker-wrap" / "market-ticker")                ║
+  ║    3. Delete it completely                                   ║
+  ║    4. Paste everything between the ▼ PASTE START and        ║
+  ║       ▼ PASTE END comments in its place                     ║
+  ║                                                              ║
+  ║  OPTION B — iframe (zero-conflict, works on any CMS)        ║
+  ║    Upload this file to your server, then paste:             ║
+  ║    <iframe src="/enivesh-ticker.html"                        ║
+  ║      style="width:100%;height:520px;border:none;            ║
+  ║             display:block;background:#0b0e17"></iframe>     ║
+  ╚══════════════════════════════════════════════════════════════╝
+-->
+
+<style>
+/* ════════════════════════════════════════════
+   SCOPED UNDER #env-root  ← prevents any
+   CSS clash with enivesh.in existing styles
+════════════════════════════════════════════ */
+#env-root{
+  --eg:   #10b981;   /* green  */
+  --er:   #f43f5e;   /* red    */
+  --eg2:  #059669;
+  --er2:  #e11d48;
+  --eb:   #0b0e17;   /* bg     */
+  --es:   #131722;   /* surface*/
+  --es2:  #1a2236;   /* surface2*/
+  --ebo:  #1e2740;   /* border */
+  --ebo2: #2e3d5a;
+  --et:   #e2e8f0;   /* text   */
+  --em:   #64748b;   /* muted  */
+  --enl:  #60a5fa;   /* NSE    */
+  --ebl:  #fb923c;   /* BSE    */
+  all:unset;
+  display:block;
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+  background:var(--eb);
+  color:var(--et);
+  padding:14px 16px 28px;
+  border-radius:0;
+}
+#env-root *{box-sizing:border-box;margin:0;padding:0}
+#env-root a{text-decoration:none;color:var(--enl)}
+
+/* ── Section label row ── */
+.env-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:7px}
+.env-label{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--em)}
+.env-live{
+  display:flex;align-items:center;gap:4px;padding:2px 8px;border-radius:20px;
+  background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);
+  font-size:8px;font-weight:700;letter-spacing:1px;color:var(--eg);
+}
+.env-dot{width:5px;height:5px;border-radius:50%;background:var(--eg);animation:env-pulse 1.6s infinite}
+@keyframes env-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(1.7)}}
+
+/* ── TICKER BARS ── */
+.env-ticker{
+  position:relative;background:var(--es);border:1px solid var(--ebo);
+  border-radius:7px;overflow:hidden;
+}
+.env-ticker::before,.env-ticker::after{
+  content:'';position:absolute;top:0;bottom:0;width:44px;z-index:3;pointer-events:none;
+}
+.env-ticker::before{left:0;background:linear-gradient(to right,var(--es),transparent)}
+.env-ticker::after {right:0;background:linear-gradient(to left,var(--es),transparent)}
+
+/* INDEX ticker — height 40px */
+.env-ticker.idx{height:40px;margin-bottom:4px}
+/* STOCKS ticker — height 38px */
+.env-ticker.stk{height:38px}
+
+.env-track{
+  display:flex;white-space:nowrap;align-items:center;height:100%;
+  /* 2× speed: indices 40s, stocks 27s (4× original) */
+}
+.env-track.idx-anim{animation:env-scroll 40s linear infinite}
+.env-track.stk-anim{animation:env-scroll 27s linear infinite}
+.env-track:hover{animation-play-state:paused}
+@keyframes env-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+.env-tick-item{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:0 16px;border-right:1px solid var(--ebo);height:100%;
+  font-family:'JetBrains Mono',ui-monospace,monospace;font-size:11.5px;
+  cursor:default;
+}
+.env-tick-item:last-child{border-right:none}
+.env-tsym{font-size:9.5px;font-weight:700;letter-spacing:.5px}
+.env-tsym.nse{color:var(--enl)}.env-tsym.bse{color:var(--ebl)}
+.env-tprc{font-size:12.5px;font-weight:600;color:var(--et)}
+.env-tchg{font-size:10px;font-weight:700}
+.env-tchg.up{color:var(--eg)}.env-tchg.dn{color:var(--er)}.env-tchg.fl{color:var(--em)}
+
+.env-source{font-size:8.5px;color:var(--em);letter-spacing:.8px;text-align:right;margin-bottom:14px;margin-top:3px;text-transform:uppercase}
+
+/* ── HERO CARDS ── */
+.env-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+@media(max-width:560px){.env-cards{grid-template-columns:1fr}}
+
+/* shared card base */
+.env-card{background:var(--es);border:1px solid var(--ebo);border-radius:11px;overflow:hidden}
+
+/* NSE card */
+.env-card.nse{border-top:3px solid var(--enl);padding:10px 14px 10px}
+.env-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:3px}
+.env-xbadge{font-size:8.5px;font-weight:700;letter-spacing:1.5px;padding:2px 8px;border-radius:20px;text-transform:uppercase}
+.env-xbadge.nse{background:rgba(96,165,250,.1);color:var(--enl);border:1px solid rgba(96,165,250,.25)}
+.env-xbadge.bse{background:rgba(251,146,60,.1);color:var(--ebl);border:1px solid rgba(251,146,60,.25)}
+.env-card-name{font-size:9.5px;color:var(--em);margin-bottom:5px;letter-spacing:.3px}
+.env-price{
+  font-family:'JetBrains Mono',ui-monospace,monospace;
+  font-size:26px;font-weight:700;letter-spacing:-1px;line-height:1;margin-bottom:6px;
+}
+.env-price.up{color:var(--eg)}.env-price.dn{color:var(--er)}.env-price.fl{color:var(--et)}
+.env-chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px}
+.env-chip{font-size:10.5px;font-family:'JetBrains Mono',monospace;font-weight:600;padding:2px 7px;border-radius:4px}
+.env-chip.up{background:rgba(16,185,129,.1);color:var(--eg);border:1px solid rgba(16,185,129,.22)}
+.env-chip.dn{background:rgba(244,63,94,.1);color:var(--er);border:1px solid rgba(244,63,94,.22)}
+.env-chip.fl{background:rgba(255,255,255,.04);color:var(--em);border:1px solid var(--ebo)}
+.env-range-bar{height:2px;background:var(--ebo2);border-radius:3px;position:relative;overflow:hidden;margin-bottom:3px}
+.env-range-fill{position:absolute;left:0;top:0;height:100%;border-radius:3px;transition:width .6s ease}
+.env-range-fill.up{background:var(--eg)}.env-range-fill.dn{background:var(--er)}
+.env-range-row{display:flex;justify-content:space-between;font-size:9px;color:var(--em)}
+.env-updated{font-size:8.5px;color:var(--em);font-family:'JetBrains Mono',monospace;margin-top:6px;display:flex;align-items:center;gap:4px}
+.env-updated-dot{width:5px;height:5px;border-radius:50%;background:var(--eg);animation:env-pulse 1.6s infinite}
+
+/* BSE card — TradingView sits inside + updated row below */
+.env-card.bse{border-top:3px solid var(--ebl);display:flex;flex-direction:column}
+.env-bse-head{padding:10px 14px 3px;display:flex;align-items:center;justify-content:space-between}
+.env-bse-name{font-size:9.5px;color:var(--em);padding:0 14px 4px;letter-spacing:.3px}
+.env-tv-wrap{padding:0 4px 2px}
+.env-tv-wrap .tradingview-widget-container,
+.env-tv-wrap .tradingview-widget-container__widget{width:100%!important;height:80px!important}
+.env-bse-footer{padding:0 14px 10px;font-size:8.5px;color:var(--em);font-family:'JetBrains Mono',monospace;display:flex;align-items:center;gap:4px}
+.env-bse-footer-dot{width:5px;height:5px;border-radius:50%;background:var(--eg);animation:env-pulse 1.6s infinite}
+
+/* ── COLLAPSIBLE INDICES TABLE ── */
+.env-col-hdr{
+  display:flex;align-items:center;justify-content:space-between;
+  cursor:pointer;user-select:none;
+  padding:10px 14px;background:var(--es);border:1px solid var(--ebo);
+  border-radius:9px;margin-bottom:8px;transition:background .15s;
+}
+.env-col-hdr:hover{background:var(--es2)}
+.env-col-left{display:flex;align-items:center;gap:9px}
+.env-col-title{font-size:9px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--em)}
+.env-count{font-size:8.5px;padding:1px 7px;border-radius:10px;background:rgba(255,255,255,.05);color:var(--em);border:1px solid var(--ebo)}
+.env-caret-btn{display:flex;align-items:center;gap:4px;font-size:10px;color:var(--em);background:none;border:none;cursor:pointer;padding:2px 6px;border-radius:5px;transition:color .15s}
+.env-caret-btn:hover{color:var(--et)}
+.env-caret{font-size:11px;display:inline-block;transition:transform .3s ease}
+.env-caret.open{transform:rotate(180deg)}
+.env-col-body{overflow:hidden;transition:max-height .38s cubic-bezier(.4,0,.2,1),opacity .3s;max-height:900px;opacity:1}
+.env-col-body.closed{max-height:0;opacity:0}
+
+.env-tbl-wrap{background:var(--es);border:1px solid var(--ebo);border-radius:9px;overflow:hidden;margin-bottom:16px}
+.env-tbl{width:100%;border-collapse:collapse;font-size:11.5px}
+.env-tbl thead th{background:#0d1121;padding:8px 12px;text-align:left;font-size:8.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--em);border-bottom:1px solid var(--ebo)}
+.env-tbl thead th:not(:first-child){text-align:right}
+.env-tbl tbody tr{border-bottom:1px solid var(--ebo);transition:background .1s}
+.env-tbl tbody tr:last-child{border-bottom:none}
+.env-tbl tbody tr:hover{background:rgba(255,255,255,.02)}
+.env-tbl td{padding:9px 12px;vertical-align:middle}
+.env-tbl td:not(:first-child){text-align:right;font-family:'JetBrains Mono',monospace}
+.env-sym-cell{display:flex;flex-direction:column;gap:2px}
+.env-sym-main{font-weight:600;font-size:11.5px}
+.env-sym-sub{font-size:8.5px;color:var(--em)}
+.env-tbadge{display:inline-block;font-size:7.5px;font-weight:700;letter-spacing:.8px;padding:1px 5px;border-radius:3px;text-transform:uppercase}
+.env-tbadge.nse{background:rgba(96,165,250,.09);color:var(--enl)}
+.env-tbadge.bse{background:rgba(251,146,60,.09);color:var(--ebl)}
+.env-up{color:var(--eg);font-weight:600}.env-dn{color:var(--er);font-weight:600}.env-fl{color:var(--em)}
+
+/* skeleton shimmer */
+.env-sk{
+  display:inline-block;border-radius:3px;
+  background:linear-gradient(90deg,var(--ebo) 25%,var(--es2) 50%,var(--ebo) 75%);
+  background-size:200% 100%;animation:env-shimmer 1.2s infinite;
+}
+@keyframes env-shimmer{from{background-position:200% 0}to{background-position:-200% 0}}
+
+/* ── FOOTER ── */
+.env-footer{text-align:center;font-size:9px;color:var(--em);line-height:1.9;margin-top:4px}
+.env-footer strong{color:var(--et)}
+
+/* responsive hide cols */
+@media(max-width:500px){
+  .env-tbl thead th:nth-child(n+5),
+  .env-tbl td:nth-child(n+5){display:none}
+}
+</style>
+</head>
+<body>
+<!-- ▼ PASTE START ─────────────────────────────────────────────
+     Copy everything from here to ▼ PASTE END into enivesh.in
+     at the exact position where the old ticker block was.
+──────────────────────────────────────────────────────────── -->
+<div id="env-root">
+
+<!-- ══════ ① INDEX SCROLLING TICKER ══════ -->
+<div class="env-row">
+  <span class="env-label">Market Indices</span>
+  <span class="env-live"><span class="env-dot"></span>Live</span>
+</div>
+<div class="env-ticker idx">
+  <div class="env-track idx-anim" id="envIdxTrack">
+    <!-- JS fills this; skeleton shown until data arrives -->
+    <span class="env-tick-item"><span class="env-sk" style="width:160px;height:14px"></span></span>
+    <span class="env-tick-item"><span class="env-sk" style="width:160px;height:14px"></span></span>
+    <span class="env-tick-item"><span class="env-sk" style="width:160px;height:14px"></span></span>
+  </div>
+</div>
+<div class="env-source">NSE &amp; BSE: Yahoo Finance · Refreshes every 60 s</div>
+
+<!-- ══════ ② HERO CARDS ══════ -->
+<div class="env-cards">
+
+  <!-- NSE NIFTY 50 -->
+  <div class="env-card nse">
+    <div class="env-card-top">
+      <span class="env-xbadge nse">NSE</span>
+      <span class="env-live"><span class="env-dot"></span>Live</span>
+    </div>
+    <div class="env-card-name">NIFTY 50</div>
+    <div class="env-price fl" id="envNsePrice">
+      <span class="env-sk" style="width:170px;height:30px;display:block"></span>
+    </div>
+    <div class="env-chips" id="envNseChips"></div>
+    <div class="env-range-bar"><div class="env-range-fill up" id="envNseBar" style="width:50%"></div></div>
+    <div class="env-range-row"><span id="envNseLow">L —</span><span id="envNseHigh">H —</span></div>
+    <div class="env-updated" id="envNseUpdated" style="display:none">
+      <span class="env-updated-dot"></span><span id="envNseTs"></span>
+    </div>
+  </div>
+
+  <!-- BSE SENSEX — TradingView widget + synced timestamp below -->
+  <div class="env-card bse">
+    <div class="env-bse-head">
+      <span class="env-xbadge bse">BSE</span>
+      <span class="env-live"><span class="env-dot"></span>Live</span>
+    </div>
+    <div class="env-bse-name">SENSEX 30</div>
+    <div class="env-tv-wrap">
+      <!-- TradingView Widget BEGIN -->
+      <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript"
+          src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+        {
+          "symbol": "BSE:SENSEX",
+          "width": "100%",
+          "height": 80,
+          "isTransparent": true,
+          "colorTheme": "dark",
+          "locale": "en"
+        }
+        </script>
+      </div>
+      <!-- TradingView Widget END -->
+    </div>
+    <!-- Yahoo Finance also fetches Sensex for the timestamp -->
+    <div class="env-bse-footer" id="envBseUpdated" style="display:none">
+      <span class="env-bse-footer-dot"></span><span id="envBseTs"></span>
+    </div>
+  </div>
+
+</div><!-- /env-cards -->
+
+<!-- ══════ ③ STOCKS SCROLLING TICKER ══════ -->
+<div class="env-row">
+  <span class="env-label">Nifty 50 &amp; Sensex 30 — Stocks</span>
+  <span class="env-live"><span class="env-dot"></span>Live</span>
+</div>
+<div class="env-ticker stk">
+  <div class="env-track stk-anim" id="envStkTrack">
+    <span class="env-tick-item"><span class="env-sk" style="width:140px;height:13px"></span></span>
+    <span class="env-tick-item"><span class="env-sk" style="width:140px;height:13px"></span></span>
+    <span class="env-tick-item"><span class="env-sk" style="width:140px;height:13px"></span></span>
+  </div>
+</div>
+<div class="env-source">Top 30 constituents · Yahoo Finance (.NS) · Refreshes every 90 s</div>
+
+<!-- ══════ ④ COLLAPSIBLE INDICES TABLE ══════ -->
+<div class="env-col-hdr" id="envColHdr"
+  onclick="envToggle()" role="button" tabindex="0" aria-expanded="true" aria-controls="envColBody"
+  onkeydown="if(event.key==='Enter'||event.key===' ')envToggle()">
+  <div class="env-col-left">
+    <span class="env-col-title">▸ All Indices — Live Snapshot</span>
+    <span class="env-count" id="envIdxCount">8 indices</span>
+  </div>
+  <button class="env-caret-btn" aria-label="Toggle">
+    <span id="envColLabel">Collapse</span>
+    <span class="env-caret open" id="envCaret">▼</span>
+  </button>
+</div>
+
+<div class="env-col-body" id="envColBody">
+  <div class="env-tbl-wrap">
+    <table class="env-tbl">
+      <thead>
+        <tr>
+          <th>Index</th>
+          <th>Price (₹)</th>
+          <th>Change</th>
+          <th>Chg %</th>
+          <th>Day High</th>
+          <th>Day Low</th>
+          <th>Prev Close</th>
+        </tr>
+      </thead>
+      <tbody id="envTblBody">
+        <tr><td colspan="7" style="text-align:center;padding:20px;color:var(--em);font-size:11px">
+          Loading…
+        </td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="env-footer">
+  NSE indices &amp; stocks: <strong>Yahoo Finance</strong> &nbsp;·&nbsp;
+  BSE Sensex ticker: <strong>TradingView</strong> &nbsp;·&nbsp;
+  Auto-refresh <strong>60 s</strong> (indices) / <strong>90 s</strong> (stocks)<br>
+  Market hours: <strong>Mon–Fri 9:15 AM – 3:30 PM IST</strong>
+</div>
+
+</div><!-- /env-root -->
+<!-- ▼ PASTE END ─────────────────────────────────────────────── -->
+
+<script>
+/* ═══════════════════════════════════════════════════════
+   eNivesh Ticker — all logic namespaced under "ENV"
+   to avoid clashes with existing enivesh.in scripts
+═══════════════════════════════════════════════════════ */
+(function(){
+'use strict';
+
+/* ── Config ── */
+var PROXY = 'https://api.allorigins.win/raw?url=';
+var YF    = 'https://query1.finance.yahoo.com/v8/finance/chart/';
+
+var INDICES = [
+  {sym:'^NSEI',      label:'NIFTY 50',     exch:'nse'},
+  {sym:'^BSESN',     label:'SENSEX 30',    exch:'bse'},
+  {sym:'^NSEBANK',   label:'BANK NIFTY',   exch:'nse'},
+  {sym:'^CNXIT',     label:'NIFTY IT',     exch:'nse'},
+  {sym:'^CNXPHARMA', label:'NIFTY PHARMA', exch:'nse'},
+  {sym:'^CNXFMCG',   label:'NIFTY FMCG',   exch:'nse'},
+  {sym:'^CNXAUTO',   label:'NIFTY AUTO',   exch:'nse'},
+  {sym:'^CNXREALTY', label:'NIFTY REALTY', exch:'nse'},
+];
+
+var STOCKS = [
+  {sym:'RELIANCE.NS',  name:'Reliance'},
+  {sym:'HDFCBANK.NS',  name:'HDFC Bank'},
+  {sym:'BHARTIARTL.NS',name:'Airtel'},
+  {sym:'ICICIBANK.NS', name:'ICICI Bank'},
+  {sym:'INFY.NS',      name:'Infosys'},
+  {sym:'TCS.NS',       name:'TCS'},
+  {sym:'ITC.NS',       name:'ITC'},
+  {sym:'LT.NS',        name:'L&T'},
+  {sym:'AXISBANK.NS',  name:'Axis Bank'},
+  {sym:'KOTAKBANK.NS', name:'Kotak Bank'},
+  {sym:'HINDUNILVR.NS',name:'HUL'},
+  {sym:'SBIN.NS',      name:'SBI'},
+  {sym:'BAJFINANCE.NS',name:'Bajaj Fin'},
+  {sym:'ADANIENT.NS',  name:'Adani Ent'},
+  {sym:'MARUTI.NS',    name:'Maruti'},
+  {sym:'TITAN.NS',     name:'Titan'},
+  {sym:'SUNPHARMA.NS', name:'Sun Pharma'},
+  {sym:'WIPRO.NS',     name:'Wipro'},
+  {sym:'NTPC.NS',      name:'NTPC'},
+  {sym:'POWERGRID.NS', name:'Power Grid'},
+  {sym:'ULTRACEMCO.NS',name:'UltraCem'},
+  {sym:'ASIANPAINT.NS',name:'Asian Paints'},
+  {sym:'TATAMOTORS.NS',name:'Tata Motors'},
+  {sym:'NESTLEIND.NS', name:'Nestle'},
+  {sym:'HCLTECH.NS',   name:'HCL Tech'},
+  {sym:'JSWSTEEL.NS',  name:'JSW Steel'},
+  {sym:'BAJAJFINSV.NS',name:'Bajaj Finserv'},
+  {sym:'INDUSINDBK.NS',name:'IndusInd Bk'},
+  {sym:'TATACONSUM.NS',name:'Tata Consum'},
+  {sym:'BEL.NS',       name:'BEL'},
+];
+
+document.getElementById('envIdxCount').textContent = INDICES.length + ' indices';
+
+/* ── caches ── */
+var idxC = {}, stkC = {};
+
+/* ── Helpers ── */
+function fmt(n, d) {
+  if (n == null || isNaN(n)) return '—';
+  d = d == null ? 2 : d;
+  return n.toLocaleString('en-IN', {minimumFractionDigits:d, maximumFractionDigits:d});
+}
+function fmtTime(ts) {
+  if (!ts) return '';
+  return new Date(ts * 1000).toLocaleTimeString('en-IN', {
+    hour:'2-digit', minute:'2-digit', second:'2-digit',
+    timeZone:'Asia/Kolkata'
+  }) + ' IST';
+}
+function fmtDateTime(ts) {
+  if (!ts) return '';
+  var d = new Date(ts * 1000);
+  return d.toLocaleDateString('en-IN', {day:'2-digit', month:'short', year:'numeric', timeZone:'Asia/Kolkata'}) +
+    ' ' + d.toLocaleTimeString('en-IN', {hour:'2-digit', minute:'2-digit', second:'2-digit', timeZone:'Asia/Kolkata'}) + ' IST';
+}
+function dir(c) { return c > 0 ? 'up' : c < 0 ? 'dn' : 'fl'; }
+function arr(c) { return c > 0 ? '▲' : c < 0 ? '▼' : '●'; }
+function sign(c){ return c >= 0 ? '+' : ''; }
+
+/* ── Fetch one Yahoo Finance quote ── */
+function yq(sym) {
+  var url = YF + encodeURIComponent(sym) + '?interval=1d&range=1d&t=' + Date.now();
+  var px  = PROXY + encodeURIComponent(url);
+  return fetch(px, {cache:'no-store'}).then(function(r){ return r.json(); }).then(function(data){
+    var m = data && data.chart && data.chart.result &&
+            data.chart.result[0] && data.chart.result[0].meta;
+    if (!m) return null;
+    return {
+      price: m.regularMarketPrice   || m.previousClose,
+      prev:  m.previousClose,
+      high:  m.regularMarketDayHigh || m.regularMarketPrice,
+      low:   m.regularMarketDayLow  || m.regularMarketPrice,
+      ts:    m.regularMarketTime,
+    };
+  }).catch(function(){ return null; });
+}
+
+/* ── Render index ticker bar ── */
+function renderIdxTicker() {
+  var html = INDICES.map(function(s) {
+    var d = idxC[s.sym];
+    if (!d) return '<span class="env-tick-item">' +
+      '<span class="env-tsym ' + s.exch + '">' + s.label + '</span>' +
+      '<span class="env-sk" style="width:80px;height:13px"></span></span>';
+    var chg = d.price - d.prev, pct = d.prev ? chg/d.prev*100 : 0;
+    var dc = dir(chg);
+    return '<span class="env-tick-item">' +
+      '<span class="env-tsym ' + s.exch + '">' + s.label + '</span>' +
+      '<span class="env-tprc">₹' + fmt(d.price) + '</span>' +
+      '<span class="env-tchg ' + dc + '">' + arr(chg) + ' ' + sign(chg) + fmt(pct) + '%</span>' +
+      '</span>';
+  }).join('');
+  // duplicate for seamless loop
+  var el = document.getElementById('envIdxTrack');
+  el.innerHTML = html + html;
+}
+
+/* ── Render NSE NIFTY hero card ── */
+function renderNseCard() {
+  var d = idxC['^NSEI'];
+  if (!d) return;
+  var chg = d.price - d.prev, pct = d.prev ? chg/d.prev*100 : 0;
+  var dc = dir(chg);
+  var rPct = d.high !== d.low ? Math.round((d.price - d.low)/(d.high - d.low)*100) : 50;
+
+  var priceEl = document.getElementById('envNsePrice');
+  priceEl.className = 'env-price ' + dc;
+  priceEl.textContent = '₹' + fmt(d.price);
+
+  document.getElementById('envNseChips').innerHTML =
+    '<span class="env-chip ' + dc + '">' + arr(chg) + ' ' + sign(chg) + fmt(chg) + '</span>' +
+    '<span class="env-chip ' + dc + '">' + sign(chg) + fmt(pct) + '%</span>';
+
+  var bar = document.getElementById('envNseBar');
+  bar.className = 'env-range-fill ' + dc;
+  bar.style.width = rPct + '%';
+
+  document.getElementById('envNseLow').textContent  = 'L ₹' + fmt(d.low);
+  document.getElementById('envNseHigh').textContent = 'H ₹' + fmt(d.high);
+
+  var tsEl = document.getElementById('envNseUpdated');
+  tsEl.style.display = 'flex';
+  document.getElementById('envNseTs').textContent = 'Updated ' + fmtDateTime(d.ts);
+}
+
+/* ── Render BSE Sensex timestamp (from Yahoo Finance ^BSESN) ── */
+function renderBseTimestamp() {
+  var d = idxC['^BSESN'];
+  if (!d || !d.ts) return;
+  var tsEl = document.getElementById('envBseUpdated');
+  tsEl.style.display = 'flex';
+  document.getElementById('envBseTs').textContent = 'Updated ' + fmtDateTime(d.ts);
+}
+
+/* ── Render stocks ticker bar ── */
+function renderStkTicker() {
+  var html = STOCKS.map(function(s) {
+    var d = stkC[s.sym];
+    if (!d) return '<span class="env-tick-item">' +
+      '<span class="env-tsym nse">' + s.name + '</span>' +
+      '<span class="env-sk" style="width:60px;height:12px"></span></span>';
+    var chg = d.price - d.prev, pct = d.prev ? chg/d.prev*100 : 0;
+    var dc = dir(chg);
+    return '<span class="env-tick-item">' +
+      '<span class="env-tsym nse">' + s.name + '</span>' +
+      '<span class="env-tprc">₹' + fmt(d.price) + '</span>' +
+      '<span class="env-tchg ' + dc + '">' + arr(chg) + ' ' + sign(chg) + fmt(pct) + '%</span>' +
+      '</span>';
+  }).join('');
+  var el = document.getElementById('envStkTrack');
+  el.innerHTML = html + html;
+}
+
+/* ── Render indices table ── */
+function renderTable() {
+  var html = INDICES.map(function(s) {
+    var d = idxC[s.sym];
+    var xl = '<span class="env-tbadge ' + s.exch + '">' + s.exch.toUpperCase() + '</span>';
+    if (!d) return '<tr>' +
+      '<td><div class="env-sym-cell"><span class="env-sym-main">' + s.label + '</span>' +
+      '<span class="env-sym-sub">' + xl + '</span></div></td>' +
+      [1,2,3,4,5,6].map(function(){return'<td><span class="env-sk" style="width:55px;height:11px"></span></td>';}).join('') +
+      '</tr>';
+    var chg = d.price - d.prev, pct = d.prev ? chg/d.prev*100 : 0;
+    var dc = dir(chg), cls = 'env-' + dc;
+    return '<tr>' +
+      '<td><div class="env-sym-cell"><span class="env-sym-main">' + s.label + '</span>' +
+      '<span class="env-sym-sub">' + xl + '</span></div></td>' +
+      '<td><strong>₹' + fmt(d.price) + '</strong></td>' +
+      '<td class="' + cls + '">' + arr(chg) + ' ' + sign(chg) + fmt(chg) + '</td>' +
+      '<td class="' + cls + '">' + sign(chg) + fmt(pct) + '%</td>' +
+      '<td style="color:var(--em)">₹' + fmt(d.high) + '</td>' +
+      '<td style="color:var(--em)">₹' + fmt(d.low)  + '</td>' +
+      '<td style="color:var(--em)">₹' + fmt(d.prev) + '</td>' +
+      '</tr>';
+  }).join('');
+  document.getElementById('envTblBody').innerHTML = html;
+}
+
+/* ── Refresh all indices ── */
+function refreshIndices() {
+  var promises = INDICES.map(function(s) {
+    return yq(s.sym).then(function(d){ if (d) idxC[s.sym] = d; });
+  });
+  Promise.all(promises).then(function(){
+    renderIdxTicker();
+    renderNseCard();
+    renderBseTimestamp();
+    renderTable();
+  });
+}
+
+/* ── Refresh stocks in micro-batches (5 at a time, 150ms gap)
+      so allorigins doesn't rate-limit us on page load ── */
+function refreshStocks() {
+  var i = 0;
+  function next() {
+    if (i >= STOCKS.length) { renderStkTicker(); return; }
+    var batch = STOCKS.slice(i, i + 5);
+    i += 5;
+    Promise.all(batch.map(function(s){
+      return yq(s.sym).then(function(d){ if (d) stkC[s.sym] = d; });
+    })).then(function(){
+      renderStkTicker(); /* update ticker as each batch lands */
+      setTimeout(next, 150);
+    });
+  }
+  next();
+}
+
+/* ── Collapse toggle ── */
+window.envToggle = function() {
+  var body  = document.getElementById('envColBody');
+  var caret = document.getElementById('envCaret');
+  var label = document.getElementById('envColLabel');
+  var hdr   = document.getElementById('envColHdr');
+  var isOpen = !body.classList.contains('closed');
+  if (isOpen) {
+    body.classList.add('closed');
+    caret.classList.remove('open');
+    label.textContent = 'Expand';
+    hdr.setAttribute('aria-expanded','false');
+  } else {
+    body.classList.remove('closed');
+    caret.classList.add('open');
+    label.textContent = 'Collapse';
+    hdr.setAttribute('aria-expanded','true');
+  }
+};
+
+/* ── INIT: fetch immediately, then on schedule ── */
+refreshIndices();
+refreshStocks();
+setInterval(refreshIndices, 60000);   /* indices every 60 s */
+setInterval(refreshStocks,  90000);   /* stocks   every 90 s */
+
+})(); /* end IIFE */
+</script>
+
+</body>
+</html>
