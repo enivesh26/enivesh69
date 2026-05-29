@@ -725,7 +725,9 @@
       <div class="tradingview-widget-container">
         <div class="tradingview-widget-container__widget"></div>
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+
         {"symbol":"BSE:SENSEX","width":"100%","height":80,"isTransparent":true,"colorTheme":"dark","locale":"en"}
+
         </script>
       </div>
     </div>
@@ -804,12 +806,21 @@
         <p>Research-backed stock picks for BSE/NSE. We analyse, build, and manage portfolios aligned with your risk appetite and time horizon.</p>
         <div class="service-meta"><span class="service-price"><a href="https://iiflcs.in/IILLTD/pvn5g" target="_blank" rel="noopener noreferrer" style="color:var(--blue-deep);text-decoration:none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Starting ₹5,000 →</a></span><a href="#pricing" class="service-link">Learn more →</a></div>
       </div>
+<<<<<<< HEAD
       <div class="service-card reveal" style="transition-delay:0.08s">
         <div class="service-icon">📊</div>
         <h3>Mutual Funds</h3>
         <p>Access 1000+ schemes across equity, debt, and hybrid. Start a SIP from ₹500/month or invest lump sum — with zero commission to you.</p>
         <div class="service-meta"><span class="service-price"><a href="https://invest.iiflsecurities.com/client-preOnboading?QRData=0AMJSEQSRVV98mIOhoWDug==" target="_blank" rel="noopener noreferrer" style="color:var(--blue-deep);text-decoration:none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">SIP from ₹500/mo →</a></span><a href="#pricing" class="service-link">Learn more →</a></div>
       </div>
+=======
+     <a href="mutual-funds.html" target="_blank" rel="noopener noreferrer" class="service-card reveal" style="transition-delay:0.08s;display:block;text-decoration:none;color:inherit;cursor:pointer;">
+  <div class="service-icon">📊</div>
+  <h3>Mutual Funds</h3>
+  <p>Access 1000+ schemes across equity, debt, and hybrid. Start a SIP from ₹500/month or invest lump sum — with zero commission to you.</p>
+  <div class="service-meta"><span class="service-price"><a href="https://invest.iiflsecurities.com/client-preOnboading?QRData=0AMJSEQSRVV98mIOhoWDug==" target="_blank" rel="noopener noreferrer" style="color:var(--blue-deep);text-decoration:none;" onclick="event.stopPropagation()" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">SIP from ₹500/mo →</a></span><a href="#pricing" class="service-link" onclick="event.stopPropagation()">Learn more →</a></div>
+</a>
+>>>>>>> 511d64f (Added my changes)
       <div class="service-card reveal" style="transition-delay:0.16s">
         <div class="service-icon">💼</div>
         <h3>Portfolio Management (PMS)</h3>
@@ -1361,6 +1372,7 @@
   // ══════════════════════════════════════════════════
   // FINANCIAL NEWS (Indian markets)
   // ══════════════════════════════════════════════════
+<<<<<<< HEAD
   const FINANCIAL_HEADLINES = [
     {title:"RBI holds repo rate steady; signals cautious stance on inflation outlook",src:"Economic Times",url:"https://economictimes.indiatimes.com/markets",cat:"Monetary Policy"},
     {title:"Nifty 50 touches new highs as FII inflows surge in May 2026",src:"Mint",url:"https://www.livemint.com/market",cat:"Equity Markets"},
@@ -1392,6 +1404,78 @@
   }
   renderNews();
   setInterval(renderNews, 1800000); // refresh every 30 min
+=======
+ async function fetchNews() {
+  const grid = document.getElementById('newsGrid');
+  const loading = document.getElementById('newsLoading');
+  const timestamp = document.getElementById('newsTimestamp');
+
+  const RSS_FEEDS = [
+    'https://economictimes.indiatimes.com/markets/rssfeeds/1977021501.cms',
+    'https://www.moneycontrol.com/rss/MCtopnews.xml',
+    'https://www.business-standard.com/rss/markets-106.rss',
+  ];
+
+  const PROXY = 'https://api.rss2json.com/v1/api.json?rss_url=';
+  const colors = ['#1DA1F2','#1AAF6B','#FF6B2B','#9333ea','#0D7EC4','#f59e0b','#ef4444','#14b8a6','#ec4899'];
+
+  try {
+    // fetch all feeds in parallel
+    const results = await Promise.allSettled(
+      RSS_FEEDS.map(feed =>
+        fetch(PROXY + encodeURIComponent(feed))
+          .then(r => r.json())
+      )
+    );
+
+    // flatten all items from all feeds
+    let items = [];
+    results.forEach(r => {
+      if (r.status === 'fulfilled' && r.value.items) {
+        items = items.concat(r.value.items);
+      }
+    });
+
+    if (items.length === 0) throw new Error('No items');
+
+    // deduplicate by title, take first 9
+    const seen = new Set();
+    const unique = items.filter(item => {
+      if (seen.has(item.title)) return false;
+      seen.add(item.title);
+      return true;
+    }).slice(0, 9);
+
+    if (loading) loading.remove();
+
+    const now = new Date();
+    timestamp.textContent = `Refreshed ${now.toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})} ${now.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'})}`;
+
+    grid.innerHTML = unique.map((item, i) => {
+      const source = new URL(item.link).hostname.replace('www.','');
+      const date = item.pubDate ? new Date(item.pubDate).toLocaleDateString('en-IN',{day:'numeric',month:'short'}) : '';
+      return `
+        <a href="${item.link}" target="_blank" rel="noopener noreferrer"
+          style="background:#fff;border:1px solid var(--gray-200);border-radius:12px;padding:1.2rem 1.3rem;text-decoration:none;display:flex;flex-direction:column;gap:8px;transition:box-shadow 0.2s,transform 0.2s;"
+          onmouseover="this.style.boxShadow='0 6px 24px rgba(13,126,196,0.13)';this.style.transform='translateY(-3px)';"
+          onmouseout="this.style.boxShadow='none';this.style.transform='translateY(0)';">
+          <span style="font-size:13px;font-weight:600;color:var(--navy);line-height:1.5;">${item.title}</span>
+          <span style="font-size:11px;color:var(--text-muted);margin-top:auto;display:flex;justify-content:space-between;">
+            <span>📰 ${source}</span><span>${date}</span>
+          </span>
+        </a>`;
+    }).join('');
+
+  } catch(e) {
+    if (loading) loading.textContent = 'Could not load news. Please try again later.';
+    console.error('News fetch failed:', e);
+  }
+}
+
+fetchNews();
+// refresh every 24 hours
+setInterval(fetchNews, 86400000);
+>>>>>>> 511d64f (Added my changes)
 
   // ══════════════════════════════════════════════════
   // EXISTING FUNCTIONALITY
