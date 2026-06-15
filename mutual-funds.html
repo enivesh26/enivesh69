@@ -1,0 +1,1774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mutual Funds | eNivesh Financial Services</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ── ROOT / TOKENS (matching eNivesh.in palette) ── */
+:root {
+  --navy:      #0d1b2a;
+  --navy2:     #132236;
+  --navy3:     #1a2f4a;
+  --green:     #1DA1F2;
+  --green-dk:  #1a8fd1;
+  --green-lt:  #dbeffe;
+  --accent:    #0ea5e9;
+  --gold:      #f59e0b;
+  --white:     #ffffff;
+  --off-white: #f8fafc;
+  --gray-50:   #f8fafc;
+  --gray-100:  #f1f5f9;
+  --gray-200:  #e2e8f0;
+  --gray-400:  #94a3b8;
+  --gray-600:  #475569;
+  --gray-800:  #1e293b;
+  --text:      #0f172a;
+  --shadow:    0 4px 24px rgba(0,0,0,.08);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,.14);
+  --radius:    10px;
+  --invest-link: https://invest.iiflsecurities.com/client-preOnboading?QRData=VFslvva4gg9Mto8ST24ucg==;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Sora', 'Inter', sans-serif; background: var(--gray-50); color: var(--text); line-height: 1.6; }
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; }
+
+/* ══════════════════════════════════════════════
+   HEADER — exact replica of enivesh.in
+══════════════════════════════════════════════ */
+header {
+  background: var(--navy);
+  position: sticky; top: 0; z-index: 1000;
+  box-shadow: 0 2px 16px rgba(0,0,0,.35);
+}
+.header-top-bar {
+  background: var(--navy2);
+  padding: 6px 40px;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 12px; color: rgba(255,255,255,.7);
+}
+.header-top-bar a { color: #7dd3fc; font-weight: 600; }
+.header-top-phone { display: flex; align-items: center; gap: 6px; }
+.header-top-phone svg { width: 13px; height: 13px; fill: #7dd3fc; }
+.header-main {
+  padding: 0 40px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 68px; gap: 16px;
+}
+.logo-wrap { display: flex; align-items: center; gap: 12px; }
+.logo-img-wrap {
+  display: flex; align-items: center; gap: 10px;
+}
+/* Logo real image */
+.logo-img-real { height:44px; width:auto; display:block; object-fit:contain; }
+.logo-img-real-ft { height:38px; width:auto; display:block; object-fit:contain; }
+/* Fallback text logo shown if image fails */
+.logo-fallback, .logo-fallback-ft { align-items:center; gap:10px; }
+.logo-emblem {
+  width: 44px; height: 44px; border-radius: 10px;
+  background: linear-gradient(135deg, #1DA1F2 0%, #0ea5e9 100%);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.logo-emblem svg { width: 26px; height: 26px; fill: #fff; }
+.logo-text-wrap { display: flex; flex-direction: column; line-height: 1.1; }
+.logo-name {
+  font-size: 20px; font-weight: 800; color: #fff;
+  letter-spacing: -.3px;
+}
+.logo-name span { color: #7dd3fc; }
+.logo-tagline { font-size: 10px; color: rgba(255,255,255,.55); font-weight: 400; letter-spacing: 1.4px; text-transform: uppercase; }
+
+.nav-links { display: flex; align-items: center; gap: 6px; }
+.nav-links a {
+  color: rgba(255,255,255,.8); font-size: 13.5px; font-weight: 500;
+  padding: 8px 14px; border-radius: 7px; transition: all .2s;
+}
+.nav-links a:hover, .nav-links a.active { color: #fff; background: rgba(255,255,255,.1); }
+.nav-links a.active { color: #7dd3fc; }
+.nav-cta {
+  background: var(--green); color: #fff !important;
+  padding: 9px 20px !important; border-radius: 8px !important;
+  font-weight: 600 !important; font-size: 13px !important;
+  transition: background .2s !important;
+}
+.nav-cta:hover { background: var(--green-dk) !important; }
+
+/* ══════════════════════════════════════════════
+   HERO BANNER
+══════════════════════════════════════════════ */
+.hero {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy3) 50%, #0d3b2a 100%);
+  padding: 72px 40px 80px; position: relative; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute;
+  width: 600px; height: 600px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(29,161,242,.15) 0%, transparent 70%);
+  right: -100px; top: -150px;
+}
+.hero::after {
+  content: ''; position: absolute;
+  width: 400px; height: 400px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(14,165,233,.1) 0%, transparent 70%);
+  left: 10%; bottom: -100px;
+}
+.hero-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 2; }
+.hero-chip {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(29,161,242,.18); border: 1px solid rgba(29,161,242,.3);
+  color: #7dd3fc; padding: 6px 18px; border-radius: 24px;
+  font-size: 12px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase;
+  margin-bottom: 24px;
+}
+.hero h1 {
+  font-size: 54px; font-weight: 800; color: #fff; line-height: 1.08;
+  margin-bottom: 20px; letter-spacing: -.5px;
+}
+.hero h1 em { font-style: normal; color: #7dd3fc; }
+.hero p { color: rgba(255,255,255,.75); font-size: 17px; max-width: 580px; margin-bottom: 40px; font-weight: 400; }
+.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 56px; }
+.btn-hero-primary {
+  background: var(--green); color: #fff; padding: 15px 36px;
+  border-radius: 9px; font-weight: 700; font-size: 15px;
+  display: inline-flex; align-items: center; gap: 9px;
+  transition: background .2s, transform .2s;
+  box-shadow: 0 4px 20px rgba(29,161,242,.35);
+}
+.btn-hero-primary:hover { background: var(--green-dk); transform: translateY(-2px); }
+.btn-hero-outline {
+  background: rgba(255,255,255,.1); backdrop-filter: blur(12px); color: #fff;
+  padding: 15px 36px; border-radius: 9px; font-weight: 600; font-size: 15px;
+  border: 1.5px solid rgba(255,255,255,.3);
+  display: inline-flex; align-items: center; gap: 9px; transition: background .2s;
+}
+.btn-hero-outline:hover { background: rgba(255,255,255,.18); }
+.hero-stats { display: flex; gap: 48px; flex-wrap: wrap; }
+.stat-item { }
+.stat-num { font-size: 30px; font-weight: 800; color: #fff; }
+.stat-desc { font-size: 11.5px; color: rgba(255,255,255,.55); font-weight: 500; letter-spacing: .4px; margin-top: 2px; text-transform: uppercase; }
+
+/* ══════════════════════════════════════════════
+   SECTION COMMON
+══════════════════════════════════════════════ */
+section { padding: 72px 40px; }
+.container { max-width: 1200px; margin: 0 auto; }
+.sec-label {
+  display: inline-block; background: rgba(29,161,242,.1); color: var(--green);
+  padding: 5px 16px; border-radius: 20px; font-size: 11.5px; font-weight: 700;
+  letter-spacing: 1.3px; text-transform: uppercase; margin-bottom: 12px;
+}
+.sec-title { font-size: 34px; font-weight: 800; color: var(--gray-800); margin-bottom: 10px; letter-spacing: -.3px; }
+.sec-sub { color: var(--gray-600); font-size: 15.5px; max-width: 540px; }
+.sec-header { margin-bottom: 48px; }
+.sec-header.center { text-align: center; }
+.sec-header.center .sec-sub { margin: 0 auto; }
+
+.grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 22px; }
+.grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 22px; }
+
+.card {
+  background: var(--white); border-radius: 14px; padding: 26px;
+  box-shadow: var(--shadow); border: 1px solid var(--gray-200);
+  transition: box-shadow .25s, transform .25s;
+}
+.card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+
+/* ══════════════════════════════════════════════
+   CALCULATOR
+══════════════════════════════════════════════ */
+.calc-section { background: var(--white); }
+.calc-tab-bar {
+  display: inline-flex; background: var(--gray-100); border-radius: 10px;
+  padding: 5px; margin-bottom: 36px;
+}
+.c-tab {
+  padding: 11px 32px; border: none; background: transparent;
+  border-radius: 8px; font-family: 'Inter', sans-serif; font-size: 14.5px;
+  font-weight: 600; cursor: pointer; color: var(--gray-600); transition: all .25s;
+}
+.c-tab.active { background: var(--navy); color: #fff; box-shadow: 0 4px 16px rgba(13,27,42,.28); }
+
+.calc-wrap { display: flex; gap: 36px; align-items: flex-start; flex-wrap: wrap; }
+.calc-inputs { flex: 1; min-width: 300px; }
+.calc-output {
+  flex: 1; min-width: 280px; border-radius: 18px;
+  background: linear-gradient(145deg, var(--navy) 0%, var(--navy3) 100%);
+  padding: 36px; color: #fff; text-align: center;
+}
+.co-label { font-size: 12px; font-weight: 500; opacity: .65; letter-spacing: 1.1px; text-transform: uppercase; margin-bottom: 6px; }
+.co-value { font-size: 46px; font-weight: 800; letter-spacing: -1px; }
+.co-note { font-size: 12.5px; opacity: .6; margin-top: 2px; }
+.co-rows { margin-top: 28px; display: flex; flex-direction: column; gap: 10px; }
+.co-row {
+  background: rgba(255,255,255,.1); border-radius: 8px;
+  padding: 11px 16px; display: flex; justify-content: space-between; align-items: center;
+}
+.co-row span:first-child { font-size: 13px; opacity: .75; }
+.co-row span:last-child { font-weight: 700; font-size: 15px; }
+
+/* donut */
+.donut-svg-wrap { width: 110px; height: 110px; margin: 0 auto 18px; }
+svg.co-donut { width: 100%; height: 100%; }
+
+.fg { margin-bottom: 26px; }
+.fg label {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 13px; font-weight: 600; color: var(--gray-800); margin-bottom: 10px;
+}
+.fg label span { color: var(--navy); font-size: 15px; font-weight: 700; }
+input[type=range] {
+  width: 100%; -webkit-appearance: none; height: 5px; border-radius: 3px;
+  background: linear-gradient(to right, var(--green) 0%, var(--green) var(--pct, 40%), var(--gray-200) var(--pct, 40%));
+  outline: none; cursor: pointer;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 19px; height: 19px;
+  border-radius: 50%; background: var(--green);
+  box-shadow: 0 2px 8px rgba(29,161,242,.4);
+}
+.range-ends { display: flex; justify-content: space-between; font-size: 11px; color: var(--gray-400); margin-top: 5px; }
+.calc-cta {
+  display: flex; width: 100%; align-items: center; justify-content: center; gap: 10px;
+  background: var(--green); color: #fff; padding: 15px; border-radius: 9px;
+  font-weight: 700; font-size: 15px; margin-top: 8px; transition: background .2s;
+}
+.calc-cta:hover { background: var(--green-dk); }
+
+/* ══════════════════════════════════════════════
+   NFO
+══════════════════════════════════════════════ */
+.nfo-section { background: var(--gray-50); }
+.nfo-hdr { display:flex; align-items:flex-start; justify-content:space-between; flex-wrap:wrap; gap:16px; margin-bottom:24px; }
+.nfo-refresh-info { display:flex; align-items:center; gap:8px; font-size:12.5px; color:var(--gray-600); margin-top:8px; }
+.nfo-refresh-btn { background:var(--green); color:#fff; border:none; padding:7px 16px; border-radius:6px; cursor:pointer; font-size:12px; font-weight:600; font-family:inherit; transition:background .2s; }
+.nfo-refresh-btn:hover { background:var(--green-dk); }
+
+/* filter tabs */
+.nfo-filter-bar { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:24px; }
+.nfo-ftab { padding:8px 18px; border:1.5px solid var(--gray-200); border-radius:20px; background:var(--white); font-family:'Inter',sans-serif; font-size:13px; font-weight:600; color:var(--gray-600); cursor:pointer; transition:all .2s; }
+.nfo-ftab:hover { border-color:var(--green); color:var(--green); }
+.nfo-ftab.active { background:var(--navy); color:#fff; border-color:var(--navy); }
+
+/* carousel */
+.nfo-carousel-wrap { position:relative; display:flex; align-items:center; gap:0; }
+.nfo-track-outer { overflow:hidden; flex:1; border-radius:14px; }
+.nfo-track { display:flex; gap:20px; transition:transform .45s cubic-bezier(.4,0,.2,1); will-change:transform; padding:4px 2px; }
+.nfo-nav { width:42px; height:42px; border-radius:50%; border:2px solid var(--gray-200); background:var(--white); font-size:24px; cursor:pointer; color:var(--navy); flex-shrink:0; transition:all .2s; display:flex; align-items:center; justify-content:center; box-shadow:var(--shadow); z-index:2; }
+.nfo-nav:hover { background:var(--navy); color:#fff; border-color:var(--navy); }
+.nfo-prev { margin-right:12px; }
+.nfo-next { margin-left:12px; }
+
+/* NFO card */
+.nfo-card-c { background:var(--white); border-radius:14px; padding:24px; border:1px solid var(--gray-200); box-shadow:var(--shadow); flex:0 0 calc(33.333% - 14px); min-width:280px; max-width:380px; transition:box-shadow .2s, transform .2s; }
+.nfo-card-c:hover { box-shadow:var(--shadow-lg); transform:translateY(-3px); }
+@media(max-width:900px){ .nfo-card-c{ flex:0 0 calc(50% - 10px); } }
+@media(max-width:600px){ .nfo-card-c{ flex:0 0 calc(100% - 4px); } }
+
+.nfo-pill { display:inline-block; color:#fff; font-size:10px; font-weight:700; padding:3px 10px; border-radius:4px; letter-spacing:1px; text-transform:uppercase; margin-bottom:10px; }
+.nfo-pill.open { background:#16a34a; }
+.nfo-pill.upcoming { background:var(--accent); }
+.nfo-pill.closing { background:#f97316; }
+.nfo-amc { font-size:11px; color:var(--green); font-weight:700; text-transform:uppercase; letter-spacing:.8px; margin-bottom:6px; }
+.nfo-title-c { font-size:14.5px; font-weight:700; color:var(--gray-800); margin-bottom:8px; line-height:1.35; }
+.nfo-cat { display:inline-block; background:rgba(13,27,42,.06); color:var(--navy3); font-size:11px; font-weight:600; padding:2px 9px; border-radius:10px; margin-bottom:12px; }
+.nfo-meta-row { display:flex; gap:14px; flex-wrap:wrap; margin-bottom:16px; }
+.nfo-mi strong { display:block; font-size:14px; font-weight:700; color:var(--gray-800); }
+.nfo-mi span { font-size:10.5px; color:var(--gray-400); }
+.nfo-period { font-size:11.5px; color:var(--gray-600); margin-bottom:16px; display:flex; align-items:center; gap:6px; }
+.nfo-period svg { width:13px; height:13px; flex-shrink:0; }
+.btn-invest-c { display:block; text-align:center; background:linear-gradient(135deg,var(--navy),var(--navy3)); color:#fff; padding:11px; border-radius:8px; font-weight:600; font-size:13px; transition:opacity .2s; }
+.btn-invest-c:hover { opacity:.88; }
+
+/* dots */
+.nfo-dots { display:flex; justify-content:center; gap:8px; margin-top:20px; }
+.nfo-dot { width:8px; height:8px; border-radius:50%; background:var(--gray-200); cursor:pointer; transition:all .3s; border:none; }
+.nfo-dot.active { background:var(--navy); width:24px; border-radius:4px; }
+
+/* loading */
+.nfo-loading { display:flex; flex-direction:column; align-items:center; justify-content:center; padding:60px 20px; color:var(--gray-400); font-size:15px; width:100%; }
+.nfo-pill {
+  display: inline-block; background: #f97316; color: #fff;
+  font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 4px;
+  letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px;
+}
+.nfo-pill.upcoming { background: var(--accent); }
+.nfo-title { font-size: 15.5px; font-weight: 700; margin-bottom: 6px; color: var(--gray-800); line-height: 1.35; }
+.nfo-desc { font-size: 13px; color: var(--gray-600); margin-bottom: 14px; line-height: 1.6; }
+.nfo-meta { display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 18px; }
+.nfo-meta-item strong { display: block; font-size: 14px; font-weight: 700; color: var(--gray-800); }
+.nfo-meta-item span { font-size: 11px; color: var(--gray-400); }
+.btn-invest {
+  display: block; text-align: center; background: linear-gradient(135deg, var(--navy), var(--navy3));
+  color: #fff; padding: 12px; border-radius: 8px; font-weight: 600; font-size: 13.5px;
+  transition: opacity .2s;
+}
+.btn-invest:hover { opacity: .88; }
+
+/* ══════════════════════════════════════════════
+   TOP FUNDS TABLE
+══════════════════════════════════════════════ */
+.funds-section { background: var(--white); }
+.table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--gray-200); }
+table.ft { width: 100%; border-collapse: collapse; }
+table.ft thead tr { background: var(--navy); }
+table.ft th {
+  padding: 13px 16px; text-align: left; font-size: 12.5px; font-weight: 600;
+  color: rgba(255,255,255,.88); white-space: nowrap;
+}
+table.ft th:first-child { border-radius: 12px 0 0 0; }
+table.ft th:last-child { border-radius: 0 12px 0 0; }
+table.ft td { padding: 13px 16px; font-size: 13px; border-bottom: 1px solid var(--gray-100); }
+table.ft tr:last-child td { border-bottom: none; }
+table.ft tr:hover td { background: rgba(29,161,242,.03); }
+.fn { font-weight: 600; color: var(--gray-800); font-size: 13.5px; line-height: 1.3; }
+.fc { font-size: 11px; color: var(--gray-400); margin-top: 2px; }
+.rpos { color: var(--green); font-weight: 700; }
+.rneg { color: #dc2626; font-weight: 700; }
+.rbadge { padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+.r-vh { background: rgba(220,38,38,.09); color: #dc2626; }
+.r-mh { background: rgba(245,158,11,.1); color: #b45309; }
+.r-lm { background: rgba(29,161,242,.09); color: var(--green-dk); }
+.rank-circle {
+  width: 30px; height: 30px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--navy), var(--navy3));
+  color: #fff; display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 13px;
+}
+.invest-link { color: var(--green); font-weight: 700; font-size: 12.5px; white-space: nowrap; }
+.invest-link:hover { color: var(--green-dk); }
+.table-note { font-size: 11px; color: var(--gray-400); margin-top: 12px; text-align: center; }
+
+/* ══════════════════════════════════════════════
+   NEWS (auto-refresh)
+══════════════════════════════════════════════ */
+.news-section { background: var(--gray-50); }
+.news-refresh-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 28px; flex-wrap: wrap; gap: 12px;
+}
+.news-timer {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12.5px; color: var(--gray-600);
+}
+.news-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.3)} }
+#news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 20px; }
+.news-card { background: var(--white); border-radius: 12px; padding: 22px; border: 1px solid var(--gray-200); box-shadow: var(--shadow); transition: box-shadow .2s, transform .2s; }
+.news-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+.nc-top { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 12px; }
+.nc-icon { width: 44px; height: 44px; border-radius: 10px; background: linear-gradient(135deg, var(--navy), var(--navy3)); display: flex; align-items: center; justify-content: center; font-size: 20px; flex-shrink: 0; }
+.nc-meta { flex: 1; }
+.nc-date { font-size: 11px; color: var(--gray-400); text-transform: uppercase; letter-spacing: .8px; margin-bottom: 5px; }
+.nc-title { font-size: 14.5px; font-weight: 700; color: var(--gray-800); line-height: 1.4; }
+.nc-body { font-size: 13px; color: var(--gray-600); line-height: 1.65; margin-bottom: 12px; }
+.nc-tag { display: inline-block; background: rgba(13,27,42,.07); color: var(--navy3); font-size: 11px; font-weight: 600; padding: 3px 10px; border-radius: 12px; }
+.news-loading { text-align: center; padding: 60px 20px; color: var(--gray-400); font-size: 15px; }
+.news-loading .spinner { width: 36px; height: 36px; border: 3px solid var(--gray-200); border-top-color: var(--green); border-radius: 50%; animation: spin 1s linear infinite; margin: 0 auto 16px; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ══════════════════════════════════════════════
+   FACTSHEETS
+══════════════════════════════════════════════ */
+.fs-section { background: var(--white); }
+.fs-row {
+  display: flex; align-items: center; gap: 16px; padding: 18px 22px;
+  background: var(--gray-50); border-radius: 10px; border: 1px solid var(--gray-200);
+  transition: all .2s; cursor: pointer; margin-bottom: 12px;
+}
+.fs-row:hover { background: var(--white); border-color: var(--green); box-shadow: var(--shadow); }
+.fs-icon { width: 42px; height: 42px; border-radius: 9px; background: linear-gradient(135deg, var(--navy), var(--navy3)); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; }
+.fs-info { flex: 1; }
+.fs-info h4 { font-size: 14px; font-weight: 600; color: var(--gray-800); margin-bottom: 2px; }
+.fs-info span { font-size: 12px; color: var(--gray-400); }
+.fs-dl { font-size: 12.5px; color: var(--green); font-weight: 700; white-space: nowrap; }
+
+/* Expandable more AMCs */
+.fs-expand-btn {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  width: 100%; margin-top: 24px; padding: 14px 28px;
+  background: var(--gray-50); border: 2px dashed var(--gray-200);
+  border-radius: 10px; cursor: pointer; font-family: 'Inter', sans-serif;
+  font-size: 14px; font-weight: 600; color: var(--gray-600);
+  transition: all .25s;
+}
+.fs-expand-btn:hover { background: rgba(29,161,242,.06); border-color: var(--green); color: var(--green); }
+.fs-expand-btn .exp-arrow { font-size: 18px; color: var(--green); transition: transform .35s; display: inline-block; }
+.fs-expand-btn.open .exp-arrow { transform: rotate(180deg); }
+.fs-expand-btn.open { background: rgba(29,161,242,.06); border-color: var(--green); color: var(--green); border-style: solid; }
+
+.fs-extra {
+  display: none; overflow: hidden;
+  animation: slideDown .35s ease forwards;
+}
+.fs-extra.visible { display: block; }
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ══════════════════════════════════════════════
+   FAQ
+══════════════════════════════════════════════ */
+.faq-section { background: var(--gray-50); }
+.faq-item { background: var(--white); border-radius: 10px; margin-bottom: 10px; border: 1px solid var(--gray-200); overflow: hidden; }
+.faq-q {
+  padding: 18px 22px; font-size: 14.5px; font-weight: 600; cursor: pointer;
+  display: flex; justify-content: space-between; align-items: center;
+  color: var(--gray-800); transition: color .2s; user-select: none;
+}
+.faq-q:hover { color: var(--navy); }
+.faq-q .arr { font-size: 16px; color: var(--green); transition: transform .3s; }
+.faq-a { padding: 0 22px 18px; font-size: 13.5px; color: var(--gray-600); line-height: 1.75; display: none; }
+.faq-item.open .faq-q { color: var(--navy); }
+.faq-item.open .arr { transform: rotate(180deg); }
+.faq-item.open .faq-a { display: block; }
+
+/* ══════════════════════════════════════════════
+   CTA STRIP
+══════════════════════════════════════════════ */
+.cta-strip {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy3) 50%, #0d3b2a 100%);
+  padding: 80px 40px; text-align: center; position: relative; overflow: hidden;
+}
+.cta-strip::before {
+  content: ''; position: absolute;
+  width: 500px; height: 500px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(29,161,242,.12) 0%, transparent 70%);
+  left: -100px; top: -150px;
+}
+.cta-strip h2 { font-size: 42px; font-weight: 800; color: #fff; margin-bottom: 14px; position: relative; }
+.cta-strip p { color: rgba(255,255,255,.72); font-size: 17px; margin-bottom: 36px; position: relative; }
+.cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; position: relative; }
+.cta-primary {
+  background: var(--green); color: #fff; padding: 17px 48px;
+  border-radius: 9px; font-weight: 700; font-size: 16px;
+  display: inline-flex; align-items: center; gap: 10px;
+  box-shadow: 0 4px 20px rgba(29,161,242,.35); transition: background .2s, transform .2s;
+}
+.cta-primary:hover { background: var(--green-dk); transform: translateY(-2px); }
+.cta-secondary {
+  background: rgba(255,255,255,.12); backdrop-filter: blur(10px); color: #fff;
+  padding: 17px 48px; border-radius: 9px; font-weight: 600; font-size: 16px;
+  border: 1.5px solid rgba(255,255,255,.35);
+  display: inline-flex; align-items: center; gap: 10px; transition: background .2s;
+}
+.cta-secondary:hover { background: rgba(255,255,255,.2); }
+
+/* ══════════════════════════════════════════════
+   DISCLAIMER
+══════════════════════════════════════════════ */
+.disclaimer { background: #080f19; padding: 28px 40px; }
+.disclaimer-inner { max-width: 1200px; margin: 0 auto; }
+.disclaimer h5 {
+  font-size: 11px; font-weight: 700; color: rgba(255,255,255,.5);
+  text-transform: uppercase; letter-spacing: 1.8px; margin-bottom: 10px;
+  display: flex; align-items: center; gap: 6px;
+}
+.disclaimer p { font-size: 10.5px; color: rgba(255,255,255,.3); line-height: 1.85; }
+
+/* ══════════════════════════════════════════════
+   FOOTER — exact replica of enivesh.in
+══════════════════════════════════════════════ */
+footer {
+  background: var(--navy2);
+  padding: 60px 40px 0;
+}
+.footer-grid {
+  max-width: 1200px; margin: 0 auto;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1.3fr; gap: 48px;
+  padding-bottom: 48px; border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.footer-brand .logo-wrap { margin-bottom: 18px; }
+.footer-brand p { font-size: 13px; color: rgba(255,255,255,.5); line-height: 1.8; }
+.footer-reg { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 8px; }
+.reg-badge {
+  background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12);
+  color: rgba(255,255,255,.6); font-size: 11px; font-weight: 600;
+  padding: 4px 11px; border-radius: 5px; letter-spacing: .5px;
+}
+
+.footer-col h4 { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 18px; letter-spacing: .5px; text-transform: uppercase; }
+.footer-col a, .footer-col p {
+  display: block; font-size: 13px; color: rgba(255,255,255,.5);
+  margin-bottom: 10px; transition: color .2s; line-height: 1.5;
+}
+.footer-col a:hover { color: #7dd3fc; }
+.footer-col .contact-item { display: flex; align-items: flex-start; gap: 8px; margin-bottom: 12px; }
+.footer-col .ci-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+.footer-col .ci-text { font-size: 13px; color: rgba(255,255,255,.5); line-height: 1.55; }
+.footer-col .ci-text a { display: inline; color: rgba(255,255,255,.65); }
+.footer-col .ci-text a:hover { color: #7dd3fc; }
+
+.footer-bottom {
+  max-width: 1200px; margin: 0 auto;
+  padding: 22px 0;
+  display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
+}
+.footer-bottom p { font-size: 12px; color: rgba(255,255,255,.3); }
+.footer-amfi { font-size: 11px; color: rgba(255,255,255,.3); font-weight: 500; }
+
+
+/* ══════════════════════════════════════════════
+   NAV PHONE HIGHLIGHT (matching index.html)
+══════════════════════════════════════════════ */
+.nav-phone-highlight {
+  display: flex; align-items: center; gap: 6px;
+  background: linear-gradient(135deg, rgba(29,161,242,0.25), rgba(13,126,196,0.2));
+  border: 1px solid rgba(29,161,242,0.5);
+  border-radius: 24px; padding: 7px 16px;
+  box-shadow: 0 0 14px rgba(29,161,242,0.25), inset 0 1px 0 rgba(255,255,255,0.08);
+  animation: phonePulse 3s ease-in-out infinite;
+  flex-shrink: 0;
+}
+.nav-phone-highlight a {
+  font-size: 13px; font-weight: 700; color: #fff; letter-spacing: 0.03em;
+}
+.nav-phone-highlight .phone-icon { font-size: 14px; animation: phoneBounce 2.5s ease-in-out infinite; }
+@keyframes phonePulse { 0%,100%{box-shadow:0 0 14px rgba(29,161,242,0.25),inset 0 1px 0 rgba(255,255,255,0.08);} 50%{box-shadow:0 0 24px rgba(29,161,242,0.5),inset 0 1px 0 rgba(255,255,255,0.08);} }
+@keyframes phoneBounce { 0%,100%{transform:rotate(0deg);} 25%{transform:rotate(-12deg);} 75%{transform:rotate(12deg);} }
+
+/* Footer social icons */
+.footer-social { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+.social-btn {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s; flex-shrink: 0;
+}
+.social-btn:hover { background: rgba(29,161,242,0.25); border-color: rgba(29,161,242,0.5); }
+.social-btn svg { width: 16px; height: 16px; fill: rgba(255,255,255,0.65); }
+.footer-social .social-btn:hover svg { fill: #7dd3fc; }
+/* ══════════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 700px) {
+  .header-main { padding: 0 18px; }
+  .nav-links { display: none; }
+  section { padding: 48px 18px; }
+  .hero { padding: 48px 18px 60px; }
+  .hero h1 { font-size: 32px; }
+  .hero-stats { gap: 24px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  footer { padding: 48px 18px 0; }
+  .header-top-bar { padding: 6px 18px; }
+  .disclaimer { padding: 24px 18px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     HEADER (exact replica of eNivesh.in)
+═══════════════════════════════════════════════ -->
+<header>
+  <div class="header-top-bar">
+    <span>🏠 <a href="https://enivesh.in/" style="color:#7dd3fc;font-weight:700;">eNivesh.in</a> — All About Investing · Trusted Since 2006</span>
+    <div class="header-top-phone">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+      <a href="tel:+919031831828">+91-9031831828</a>
+    </div>
+  </div>
+  <div class="header-main">
+    <a href="https://enivesh.in/" class="logo-wrap logo-img-wrap">
+      <img src="data:image/png;base64,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" alt="eNivesh Financial Services" class="logo-img-real" onerror="this.onerror=null">
+    </a>
+    <nav class="nav-links">
+      <a href="https://enivesh.in/" style="color:#7dd3fc;">Home</a>
+      <a href="https://enivesh.in/#services">Services</a>
+      <a href="https://enivesh.in/#about">About</a>
+      <a href="https://enivesh.in/#pricing">Plans</a>
+      <a href="#ready-to-invest" class="active">Mutual Funds</a>
+      <a href="https://enivesh.in/enivesh-contact.html">Contact Us</a>
+      <a href="https://invest.iiflsecurities.com/client-preOnboading?QRData=VFslvva4gg9Mto8ST24ucg==" target="_blank" class="nav-cta">Start Investing →</a>
+    </nav>
+    <div class="nav-phone-highlight"><span class="phone-icon">📞</span><a href="tel:+919031831828">+91-9031831828</a></div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════ -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-chip">🚀 SEBI Registered · AMFI Certified · ARN Registered</div>
+    <h1>Invest in Mutual Funds<br>with <em>Expert Guidance</em></h1>
+    <p>Start a SIP from ₹500/month or invest a lumpsum — access 1,000+ mutual fund schemes across equity, debt, and hybrid categories with zero commission.</p>
+    <div class="hero-btns">
+      <a href="https://invest.iiflsecurities.com/client-preOnboading?QRData=VFslvva4gg9Mto8ST24ucg==" target="_blank" class="btn-hero-primary">📈 Start SIP Now</a>
+      <a href="https://invest.iiflsecurities.com/client-preOnboading?QRData=VFslvva4gg9Mto8ST24ucg==" target="_blank" class="btn-hero-outline">💰 Invest Lumpsum</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item"><div class="stat-num">₹54L Cr+</div><div class="stat-desc">Industry AUM</div></div>
+      <div class="stat-item"><div class="stat-num">10 Cr+</div><div class="stat-desc">SIP Folios</div></div>
+      <div class="stat-item"><div class="stat-num">1,500+</div><div class="stat-desc">Fund Schemes</div></div>
+      <div class="stat-item"><div class="stat-num">44</div><div class="stat-desc">AMCs in India</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     CALCULATOR
+═══════════════════════════════════════════════ -->
+<section class="calc-section" id="calculator">
+<div class="container">
+  <div class="sec-header">
+    <div class="sec-label">💡 Plan Your Wealth</div>
+    <h2 class="sec-title">SIP &amp; Lumpsum Calculator</h2>
+    <p class="sec-sub">Adjust the sliders to see how your wealth grows over time.</p>
+  </div>
+  <div class="calc-tab-bar">
+    <button class="c-tab active" onclick="switchTab('sip',this)">SIP (Monthly)</button>
+    <button class="c-tab" onclick="switchTab('lumpsum',this)">Lumpsum</button>
+  </div>
+  <div class="calc-wrap">
+    <div class="calc-inputs">
+      <!-- SIP -->
+      <div id="sip-panel">
+        <div class="fg">
+          <label>Monthly SIP Amount <span id="s-amt-v">₹5,000</span></label>
+          <input type="range" id="s-amt" min="500" max="100000" step="500" value="5000" oninput="calcSIP()">
+          <div class="range-ends"><span>₹500</span><span>₹1 Lakh</span></div>
+        </div>
+        <div class="fg">
+          <label>Investment Period <span id="s-yr-v">10 Years</span></label>
+          <input type="range" id="s-yr" min="1" max="30" step="1" value="10" oninput="calcSIP()">
+          <div class="range-ends"><span>1 Yr</span><span>30 Yrs</span></div>
+        </div>
+        <div class="fg">
+          <label>Expected Returns (p.a.) <span id="s-ret-v">12%</span></label>
+          <input type="range" id="s-ret" min="4" max="30" step="0.5" value="12" oninput="calcSIP()">
+          <div class="range-ends"><span>4%</span><span>30%</span></div>
+        </div>
+      </div>
+      <!-- Lumpsum -->
+      <div id="lump-panel" style="display:none">
+        <div class="fg">
+          <label>Investment Amount <span id="l-amt-v">₹1,00,000</span></label>
+          <input type="range" id="l-amt" min="5000" max="10000000" step="5000" value="100000" oninput="calcLump()">
+          <div class="range-ends"><span>₹5K</span><span>₹1 Cr</span></div>
+        </div>
+        <div class="fg">
+          <label>Investment Period <span id="l-yr-v">10 Years</span></label>
+          <input type="range" id="l-yr" min="1" max="30" step="1" value="10" oninput="calcLump()">
+          <div class="range-ends"><span>1 Yr</span><span>30 Yrs</span></div>
+        </div>
+        <div class="fg">
+          <label>Expected Returns (p.a.) <span id="l-ret-v">12%</span></label>
+          <input type="range" id="l-ret" min="4" max="30" step="0.5" value="12" oninput="calcLump()">
+          <div class="range-ends"><span>4%</span><span>30%</span></div>
+        </div>
+      </div>
+      <a href="https://invest.iiflsecurities.com/client-preOnboading?QRData=VFslvva4gg9Mto8ST24ucg==" target="_blank" class="calc-cta">🚀 Start Investing Now</a>
+    </div>
+    <div class="calc-output">
+      <div class="donut-svg-wrap">
+        <svg class="co-donut" viewBox="0 0 36 36">
+          <circle cx="18" cy="18" r="15.915" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="3.5"/>
+          <circle id="donut-arc" cx="18" cy="18" r="15.915" fill="none" stroke="#7dd3fc" stroke-width="3.5"
+            stroke-dasharray="52 48" stroke-dashoffset="25" stroke-linecap="round" transform="rotate(-90 18 18)"/>
+        </svg>
+      </div>
+      <div class="co-label">Total Estimated Value</div>
+      <div class="co-value" id="res-total">₹11.6 L</div>
+      <div class="co-note">At maturity — indicative figure</div>
+      <div class="co-rows">
+        <div class="co-row"><span>💼 Amount Invested</span><span id="res-inv">₹6 L</span></div>
+        <div class="co-row"><span>📈 Estimated Gains</span><span id="res-gains">₹5.6 L</span></div>
+        <div class="co-row"><span>📊 Wealth Gain %</span><span id="res-pct" style="color:#7dd3fc">93%</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     CURRENT NFOs — CAROUSEL (daily auto-refresh)
+═══════════════════════════════════════════════ -->
+<section class="nfo-section" id="nfo">
+<div class="container">
+  <div class="nfo-hdr">
+    <div>
+      <div class="sec-label">🆕 New Fund Offers</div>
+      <h2 class="sec-title">Current NFOs — Entire MF Industry</h2>
+      <p class="sec-sub">All open &amp; upcoming NFOs across every AMC in India. Auto-refreshes daily.</p>
+    </div>
+    <div class="nfo-refresh-info">
+      <div class="news-dot"></div>
+      <span id="nfo-refresh-label">Loading NFOs…</span>
+      <button onclick="loadNFOs(true)" class="nfo-refresh-btn">↺ Refresh</button>
+    </div>
+  </div>
+
+  <!-- filter tabs -->
+  <div class="nfo-filter-bar">
+    <button class="nfo-ftab active" onclick="filterNFOs('all',this)">All</button>
+    <button class="nfo-ftab" onclick="filterNFOs('open',this)">🟢 Open Now</button>
+    <button class="nfo-ftab" onclick="filterNFOs('upcoming',this)">📅 Upcoming</button>
+    <button class="nfo-ftab" onclick="filterNFOs('closing',this)">⚠️ Closing Soon</button>
+  </div>
+
+  <!-- carousel wrapper -->
+  <div class="nfo-carousel-wrap">
+    <button class="nfo-nav nfo-prev" onclick="nfoSlide(-1)" aria-label="Previous">&#8249;</button>
+    <div class="nfo-track-outer">
+      <div class="nfo-track" id="nfo-track">
+        <div class="nfo-loading"><div class="spinner"></div>Fetching latest NFOs from all AMCs…</div>
+      </div>
+    </div>
+    <button class="nfo-nav nfo-next" onclick="nfoSlide(1)" aria-label="Next">&#8250;</button>
+  </div>
+
+  <!-- dots -->
+  <div class="nfo-dots" id="nfo-dots"></div>
+  <p class="table-note" style="margin-top:16px;">* NFO data sourced from AMFI India. Auto-refreshes once daily. Data as of today's date.</p>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     TOP 10 MF FUNDS
+═══════════════════════════════════════════════ -->
+<section class="funds-section" id="top-funds">
+<div class="container">
+  <div class="sec-header">
+    <div class="sec-label">⭐ Top Performers</div>
+    <h2 class="sec-title">Top 10 Mutual Funds (2025–26)</h2>
+    <p class="sec-sub">Best-performing funds across categories based on consistent returns, fund quality, and risk-adjusted performance.</p>
+  </div>
+  <div class="table-wrap">
+  <table class="ft">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Fund Name</th>
+        <th>Category</th>
+        <th>1Y Return</th>
+        <th>3Y Return</th>
+        <th>Risk</th>
+        <th>Min SIP</th>
+        <th>Invest</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><div class="rank-circle">1</div></td>
+        <td><div class="fn">Quant Small Cap Fund</div><div class="fc">Quant Mutual Fund</div></td>
+        <td>Small Cap</td>
+        <td class="rpos">+54.2%</td>
+        <td class="rpos">+42.1%</td>
+        <td><span class="rbadge r-vh">Very High</span></td>
+        <td>₹1,000</td>
+        <td><a href="https://invest.iiflsecurities.com/client-preOnboading?QRData=VFslvva4gg9Mto8ST24ucg==" target="_blank" class="invest-link">Invest →</a></td>
+      </tr>
+      <tr>
+        <td><div class="rank-circle">2</div></td>
+        <td><div class="fn">Nippon India Small Cap Fund</div><div class="fc">Nippon India MF</div></td>
+        <td>Small Cap</td>
+        <td class="rpos">+49.3%</td>
+        <td class="rpos">+38.5%</td>
+        <td><span class="rbadge r-vh">Very High</span></td>
+        <td>₹100</td>
+        <td><a href="https://invest.iiflsecurities.com/client-preOnboading?QRData=VFslvva4gg9Mto8ST24ucg==" target="_blank" class="invest-link">Invest →</a></td>
+      </tr>
+      <tr>
+        <td><div class="rank-circle">3</div></td>
+        <td><div class="fn">Motilal Oswal Midcap Fund</div><div class="fc">Motilal Oswal MF</div></td>
+        <td>Mid Cap</td>
+        <td class="rpos">+43.7%</td>
+        <td class="rpos">+35.2%</td>
+        <td><span class="rbadge r-vh">Very High</span></td>
+        <td>₹500</td>
+        <td><a href="https://invest.iiflsecurities.com/client-preOnboading?QRData=VFslvva4gg9Mto8ST24ucg==" target="_blank" class="invest-link">Invest →</a></td>
+      </tr>
+      <tr>
+        <td><div class="rank-circle">4</div></td>
+        <td><div class="fn">Motilal Oswal Flexi Cap Fund</div><div class="fc">Motilal Oswal MF</div></td>
+        <td>Flexi Cap</td>
+        <td class="rpos">+45.7%</td>
+        <td class="rpos">+33.9%</td>
+        <td><span class="rbadge r-vh">Very High</span></td>
+        <td>₹500</td>
+        <td><a href="https://invest.iiflsecurities.com/client-preOnboading?QRData=VFslvva4gg9Mto8ST24ucg==" target="_blank" class="invest-link">Invest →</a></td>
+      </tr>
+      <tr>
+        <td><div class="rank-circle">5</div></td>
+        <td><div class="fn">Nippon India Growth Fund</div><div class="fc">Nippon India MF</div></td>
+        <td>Mid Cap</td>
+        <td class="rpos">+39.1%</td>
+        <td class="rpos">+32.4%</td>
+        <td><span class="rbadge r-vh">Very High</span></td>
+        <td>₹100</td>
+        <td><a href="https://invest.iiflsecurities.com/client-preOnboading?QRData=VFslvva4gg9Mto8ST24ucg==" target="_blank" class="invest-link">Invest →</a></td>
+      </tr>
+      <tr>
+        <td><div class="rank-circle">6</div></td>
+        <td><div class="fn">HDFC Top 100 Fund</div><div class="fc">HDFC Mutual Fund</div></td>
+        <td>Large Cap</td>
+        <td class="rpos">+31.2%</td>
+        <td class="rpos">+24.6%</td>
+        <td><span class="rbadge r-mh">Moderately High</span></td>
+        <td>₹100</td>
+        <td><a href="https://invest.iiflsecurities.com/client-preOnboading?QRData=VFslvva4gg9Mto8ST24ucg==" target="_blank" class="invest-link">Invest →</a></td>
+      </tr>
+      <tr>
+        <td><div class="rank-circle">7</div></td>
+        <td><div class="fn">SBI Bluechip Fund</div><div class="fc">SBI Mutual Fund</div></td>
+        <td>Large Cap</td>
+        <td class="rpos">+29.4%</td>
+        <td class="rpos">+22.8%</td>
+        <td><span class="rbadge r-mh">Moderately High</span></td>
+        <td>₹500</td>
+        <td><a href="https://invest.iiflsecurities.com/client-preOnboading?QRData=VFslvva4gg9Mto8ST24ucg==" target="_blank" class="invest-link">Invest →</a></td>
+      </tr>
+      <tr>
+        <td><div class="rank-circle">8</div></td>
+        <td><div class="fn">ICICI Prudential Bluechip Fund</div><div class="fc">ICICI Prudential MF</div></td>
+        <td>Large Cap</td>
+        <td class="rpos">+27.3%</td>
+        <td class="rpos">+21.1%</td>
+        <td><span class="rbadge r-mh">Moderately High</span></td>
+        <td>₹100</td>
+        <td><a href="https://invest.iiflsecurities.com/client-preOnboading?QRData=VFslvva4gg9Mto8ST24ucg==" target="_blank" class="invest-link">Invest →</a></td>
+      </tr>
+      <tr>
+        <td><div class="rank-circle">9</div></td>
+        <td><div class="fn">HDFC Balanced Advantage Fund</div><div class="fc">HDFC Mutual Fund</div></td>
+        <td>Hybrid</td>
+        <td class="rpos">+19.6%</td>
+        <td class="rpos">+17.2%</td>
+        <td><span class="rbadge r-mh">Moderate</span></td>
+        <td>₹100</td>
+        <td><a href="https://invest.iiflsecurities.com/client-preOnboading?QRData=VFslvva4gg9Mto8ST24ucg==" target="_blank" class="invest-link">Invest →</a></td>
+      </tr>
+      <tr>
+        <td><div class="rank-circle">10</div></td>
+        <td><div class="fn">ICICI Prudential Corporate Bond Fund</div><div class="fc">ICICI Prudential MF</div></td>
+        <td>Debt</td>
+        <td class="rpos">+8.4%</td>
+        <td class="rpos">+7.9%</td>
+        <td><span class="rbadge r-lm">Low to Moderate</span></td>
+        <td>₹1,000</td>
+        <td><a href="https://invest.iiflsecurities.com/client-preOnboading?QRData=VFslvva4gg9Mto8ST24ucg==" target="_blank" class="invest-link">Invest →</a></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="table-note">* Past returns are indicative and not a guarantee of future performance. Source: Value Research, AMFI. Data as of May 2026.</p>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     LATEST NEWS — auto-refreshes every 60 min
+═══════════════════════════════════════════════ -->
+<section class="news-section" id="news">
+<div class="container">
+  <div class="news-refresh-bar">
+    <div>
+      <div class="sec-label" style="margin-bottom:8px;">📰 Market Intel</div>
+      <h2 class="sec-title" style="margin-bottom:4px;">Latest Mutual Fund News</h2>
+      <p class="sec-sub">Live from ET Markets, Moneycontrol &amp; Livemint · Refreshes every 30 min.</p>
+    </div>
+    <div class="news-timer">
+      <div class="news-dot"></div>
+      <span>Next refresh in <strong id="countdown">30:00</strong></span>
+      <button onclick="loadNews()" style="background:var(--green);color:#fff;border:none;padding:7px 16px;border-radius:6px;cursor:pointer;font-size:12px;font-weight:600;font-family:inherit;">↺ Refresh Now</button>
+    </div>
+  </div>
+  <div id="news-grid">
+    <div class="news-loading"><div class="spinner"></div>Loading latest news…</div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     FACTSHEETS
+═══════════════════════════════════════════════ -->
+<section class="fs-section" id="factsheets">
+<div class="container">
+  <div class="sec-header">
+    <div class="sec-label">📄 Fund Research</div>
+    <h2 class="sec-title">Monthly Factsheets</h2>
+    <p class="sec-sub">Download the latest monthly factsheets from top AMCs — portfolio holdings, NAV data, fund manager commentary.</p>
+  </div>
+  <div class="grid-2">
+    <div>
+      <div class="fs-row" onclick="window.open('https://www.hdfcfund.com/content/dam/abc/india/assets/factsheet/Factsheet.pdf','_blank')">
+        <div class="fs-icon">🏦</div>
+        <div class="fs-info"><h4>HDFC Mutual Fund – Monthly Factsheet</h4><span>All schemes · Portfolio data · May 2026</span></div>
+        <a class="fs-dl" href="https://www.hdfcfund.com/content/dam/abc/india/assets/factsheet/Factsheet.pdf" target="_blank">Download ↗</a>
+      </div>
+      <div class="fs-row" onclick="window.open('https://www.icicipruamc.com/downloads/factsheet','_blank')">
+        <div class="fs-icon">🏛️</div>
+        <div class="fs-info"><h4>ICICI Prudential MF – Monthly Factsheet</h4><span>All schemes · NAV & portfolio · May 2026</span></div>
+        <a class="fs-dl" href="https://www.icicipruamc.com/downloads/factsheet" target="_blank">Download ↗</a>
+      </div>
+      <div class="fs-row" onclick="window.open('https://www.sbimf.com/en-us/investor-services/reports/fund-factsheet','_blank')">
+        <div class="fs-icon">🏢</div>
+        <div class="fs-info"><h4>SBI Mutual Fund – Monthly Factsheet</h4><span>Equity & debt schemes · May 2026</span></div>
+        <a class="fs-dl" href="https://www.sbimf.com/en-us/investor-services/reports/fund-factsheet" target="_blank">Download ↗</a>
+      </div>
+    </div>
+    <div>
+      <div class="fs-row" onclick="window.open('https://mf.nipponindiaim.com/FundCenter/Pages/DownloadCenter.aspx','_blank')">
+        <div class="fs-icon">📊</div>
+        <div class="fs-info"><h4>Nippon India MF – Monthly Factsheet</h4><span>Small/mid/large cap · May 2026</span></div>
+        <a class="fs-dl" href="https://mf.nipponindiaim.com/FundCenter/Pages/DownloadCenter.aspx" target="_blank">Download ↗</a>
+      </div>
+      <div class="fs-row" onclick="window.open('https://mutualfund.adityabirlacapital.com/Investor-Services/Download-Center/Factsheets','_blank')">
+        <div class="fs-icon">☀️</div>
+        <div class="fs-info"><h4>Aditya Birla Sun Life MF – Factsheet</h4><span>All categories · Portfolio holdings · May 2026</span></div>
+        <a class="fs-dl" href="https://mutualfund.adityabirlacapital.com/Investor-Services/Download-Center/Factsheets" target="_blank">Download ↗</a>
+      </div>
+      <div class="fs-row" onclick="window.open('https://www.axismf.com/downloads/factsheet','_blank')">
+        <div class="fs-icon">🔵</div>
+        <div class="fs-info"><h4>Axis Mutual Fund – Monthly Factsheet</h4><span>Equity & hybrid schemes · May 2026</span></div>
+        <a class="fs-dl" href="https://www.axismf.com/downloads/factsheet" target="_blank">Download ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Expandable: More AMCs ── -->
+  <button class="fs-expand-btn" id="fs-expand-btn" onclick="toggleMoreAMCs()">
+    <span>📂 View More AMC Factsheets</span>
+    <span class="exp-arrow">▾</span>
+    <span style="font-size:12px;font-weight:400;color:var(--gray-400);margin-left:4px;">(+14 more AMCs)</span>
+  </button>
+
+  <div class="fs-extra" id="fs-extra">
+    <div class="grid-2" style="margin-top:20px;">
+      <div>
+        <div class="fs-row" onclick="window.open('https://www.kotakmf.com/investor-corner/fund-factsheet','_blank')">
+          <div class="fs-icon">🟠</div>
+          <div class="fs-info"><h4>Kotak Mahindra MF – Monthly Factsheet</h4><span>All schemes · May 2026</span></div>
+          <a class="fs-dl" href="https://www.kotakmf.com/investor-corner/fund-factsheet" target="_blank">Download ↗</a>
+        </div>
+        <div class="fs-row" onclick="window.open('https://www.franklintempletonindia.com/investor/tools-resources/download/factsheet','_blank')">
+          <div class="fs-icon">🟤</div>
+          <div class="fs-info"><h4>Franklin Templeton MF – Monthly Factsheet</h4><span>Equity & debt schemes · May 2026</span></div>
+          <a class="fs-dl" href="https://www.franklintempletonindia.com/investor/tools-resources/download/factsheet" target="_blank">Download ↗</a>
+        </div>
+        <div class="fs-row" onclick="window.open('https://www.ltimf.com/resources/fund-factsheet','_blank')">
+          <div class="fs-icon">🔷</div>
+          <div class="fs-info"><h4>LTI MF (L&amp;T Finance MF) – Monthly Factsheet</h4><span>All schemes · May 2026</span></div>
+          <a class="fs-dl" href="https://www.ltimf.com/resources/fund-factsheet" target="_blank">Download ↗</a>
+        </div>
+        <div class="fs-row" onclick="window.open('https://www.edelweissmf.com/investor-service/fund-factsheet','_blank')">
+          <div class="fs-icon">🟣</div>
+          <div class="fs-info"><h4>Edelweiss Mutual Fund – Monthly Factsheet</h4><span>All categories · May 2026</span></div>
+          <a class="fs-dl" href="https://www.edelweissmf.com/investor-service/fund-factsheet" target="_blank">Download ↗</a>
+        </div>
+        <div class="fs-row" onclick="window.open('https://www.dspim.com/downloads/factsheet','_blank')">
+          <div class="fs-icon">🔶</div>
+          <div class="fs-info"><h4>DSP Mutual Fund – Monthly Factsheet</h4><span>Equity, debt &amp; hybrid · May 2026</span></div>
+          <a class="fs-dl" href="https://www.dspim.com/downloads/factsheet" target="_blank">Download ↗</a>
+        </div>
+        <div class="fs-row" onclick="window.open('https://www.invescomutualfund.com/download-center/factsheet','_blank')">
+          <div class="fs-icon">🟡</div>
+          <div class="fs-info"><h4>Invesco India MF – Monthly Factsheet</h4><span>All schemes · May 2026</span></div>
+          <a class="fs-dl" href="https://www.invescomutualfund.com/download-center/factsheet" target="_blank">Download ↗</a>
+        </div>
+        <div class="fs-row" onclick="window.open('https://www.jmmf.com/mutual-fund/factsheet','_blank')">
+          <div class="fs-icon">🟢</div>
+          <div class="fs-info"><h4>JM Financial MF – Monthly Factsheet</h4><span>All schemes · May 2026</span></div>
+          <a class="fs-dl" href="https://www.jmmf.com/mutual-fund/factsheet" target="_blank">Download ↗</a>
+        </div>
+      </div>
+      <div>
+        <div class="fs-row" onclick="window.open('https://www.mirae-asset.com/downloads/factsheet','_blank')">
+          <div class="fs-icon">🔴</div>
+          <div class="fs-info"><h4>Mirae Asset MF – Monthly Factsheet</h4><span>Equity &amp; hybrid schemes · May 2026</span></div>
+          <a class="fs-dl" href="https://www.mirae-asset.com/downloads/factsheet" target="_blank">Download ↗</a>
+        </div>
+        <div class="fs-row" onclick="window.open('https://www.hsbcmf.com/investor-services/factsheet','_blank')">
+          <div class="fs-icon">⬛</div>
+          <div class="fs-info"><h4>HSBC Mutual Fund – Monthly Factsheet</h4><span>All schemes · May 2026</span></div>
+          <a class="fs-dl" href="https://www.hsbcmf.com/investor-services/factsheet" target="_blank">Download ↗</a>
+        </div>
+        <div class="fs-row" onclick="window.open('https://licmf.com/downloads/factsheet','_blank')">
+          <div class="fs-icon">🛡️</div>
+          <div class="fs-info"><h4>LIC Mutual Fund – Monthly Factsheet</h4><span>All categories · May 2026</span></div>
+          <a class="fs-dl" href="https://licmf.com/downloads/factsheet" target="_blank">Download ↗</a>
+        </div>
+        <div class="fs-row" onclick="window.open('https://www.canararobeco.com/investor-corner/fund-documents/factsheet','_blank')">
+          <div class="fs-icon">🔹</div>
+          <div class="fs-info"><h4>Canara Robeco MF – Monthly Factsheet</h4><span>Equity &amp; debt funds · May 2026</span></div>
+          <a class="fs-dl" href="https://www.canararobeco.com/investor-corner/fund-documents/factsheet" target="_blank">Download ↗</a>
+        </div>
+        <div class="fs-row" onclick="window.open('https://www.ppfas.com/funds/parag-parikh-factsheet','_blank')">
+          <div class="fs-icon">🌐</div>
+          <div class="fs-info"><h4>PPFAS (Parag Parikh) MF – Monthly Factsheet</h4><span>Flexi cap &amp; liquid · May 2026</span></div>
+          <a class="fs-dl" href="https://www.ppfas.com/funds/parag-parikh-factsheet" target="_blank">Download ↗</a>
+        </div>
+        <div class="fs-row" onclick="window.open('https://www.unionmf.com/downloads/factsheet','_blank')">
+          <div class="fs-icon">🏧</div>
+          <div class="fs-info"><h4>Union Mutual Fund – Monthly Factsheet</h4><span>All schemes · May 2026</span></div>
+          <a class="fs-dl" href="https://www.unionmf.com/downloads/factsheet" target="_blank">Download ↗</a>
+        </div>
+        <div class="fs-row" onclick="window.open('https://www.bandhanmf.com/investor-services/factsheet','_blank')">
+          <div class="fs-icon">🎯</div>
+          <div class="fs-info"><h4>Bandhan Mutual Fund – Monthly Factsheet</h4><span>All categories · May 2026</span></div>
+          <a class="fs-dl" href="https://www.bandhanmf.com/investor-services/factsheet" target="_blank">Download ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     FAQ
+═══════════════════════════════════════════════ -->
+<section class="faq-section" id="faq">
+<div class="container">
+  <div class="sec-header center">
+    <div class="sec-label">❓ Common Questions</div>
+    <h2 class="sec-title">Frequently Asked Questions</h2>
+    <p class="sec-sub">Everything you need to know before investing in mutual funds through eNivesh.</p>
+  </div>
+  <div id="faq-list">
+    <div class="faq-item open">
+      <div class="faq-q" onclick="toggleFaq(this)">What is a Mutual Fund and how does it work? <span class="arr">▾</span></div>
+      <div class="faq-a">A mutual fund pools money from many investors and professionally manages it through an Asset Management Company (AMC). The fund invests this capital in stocks, bonds, or other assets as per its stated objective. Each investor owns units proportional to their contribution, sharing in the fund's gains and losses. Returns are not guaranteed and are market-linked.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What is SIP and how is it different from Lumpsum investing? <span class="arr">▾</span></div>
+      <div class="faq-a">A SIP (Systematic Investment Plan) lets you invest a fixed amount at regular intervals (monthly/weekly), benefiting from rupee cost averaging and financial discipline. A Lumpsum is a one-time investment of a larger amount — ideal when you have surplus capital and markets are at attractive valuations. SIP is recommended for salaried investors; lumpsum suits those with large windfall amounts.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Are Mutual Fund returns guaranteed? What are the risks? <span class="arr">▾</span></div>
+      <div class="faq-a">No, mutual fund returns are NOT guaranteed. Equity funds are subject to market risks and can fluctuate significantly. Historically, equity mutual funds have delivered 10–15% CAGR over 10+ year periods. Debt funds carry lower risk with lower returns. Always match the fund category to your risk appetite and investment horizon before investing.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What is an NFO (New Fund Offer)? Should I invest in one? <span class="arr">▾</span></div>
+      <div class="faq-a">An NFO is the initial launch period of a new mutual fund scheme where units are sold at ₹10/unit. NFOs are useful if the fund covers a unique strategy or theme not available in existing funds. However, a lower NAV does not mean lower cost — always evaluate the fund's investment objective and AMC track record before investing in an NFO.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What is ELSS and how does it save taxes? <span class="arr">▾</span></div>
+      <div class="faq-a">ELSS (Equity Linked Savings Scheme) is a type of equity mutual fund qualifying for tax deductions under Section 80C of the Income Tax Act. You can claim up to ₹1.5 lakh per financial year. ELSS has a mandatory 3-year lock-in period — the shortest among all Section 80C instruments — and offers market-linked returns.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What is NAV and what is expense ratio in mutual funds? <span class="arr">▾</span></div>
+      <div class="faq-a">NAV (Net Asset Value) is the per-unit price of a mutual fund, calculated daily. A higher NAV doesn't mean the fund is expensive — returns depend on NAV growth, not the absolute level. Expense Ratio is the annual fee charged by the AMC, expressed as a % of AUM. Lower expense ratio = more returns for you. Direct plans have lower expense ratios (0.5–1%) versus regular plans (1.5–2.5%).</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">How do I redeem my Mutual Fund investments? <span class="arr">▾</span></div>
+      <div class="faq-a">For open-ended funds, you can redeem anytime (subject to exit load). Submit a redemption request online — proceeds are credited to your bank account within 1–3 business days for equity funds and same/next day for liquid funds. ELSS funds have a mandatory 3-year lock-in and cannot be redeemed before that period.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Is investing through eNivesh safe? Are my funds secure? <span class="arr">▾</span></div>
+      <div class="faq-a">Yes. eNivesh (ARN-339539) is powered by IIFL Capital Services Ltd, a SEBI-registered intermediary and AMFI-registered Mutual Fund Distributor (ARN-47791). All transactions are processed directly with the AMC — your money goes to the AMC, not to us. Investments are held in your name in your own folio and are fully protected under Indian financial regulations.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">What is the minimum amount to start a SIP or Lumpsum investment? <span class="arr">▾</span></div>
+      <div class="faq-a">SIPs can be started with as little as ₹100–₹500 per month, depending on the fund. Lumpsum investments typically require a minimum of ₹500–₹5,000. There is no maximum limit. eNivesh recommends starting early even with small amounts — the power of compounding over time is significant.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Are there any charges to invest through eNivesh? <span class="arr">▾</span></div>
+      <div class="faq-a">No direct charges to you as an investor. eNivesh earns a regulated distribution commission from AMCs (included in the regular plan expense ratio) — this is fully disclosed and SEBI-mandated. You may also invest in Direct plans at lower expense ratios if you prefer to invest independently through the AMC website.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     CTA STRIP
+═══════════════════════════════════════════════ -->
+<div class="cta-strip" id="ready-to-invest">
+  <div class="container">
+    <div style="font-size:52px;margin-bottom:18px;">📈</div>
+    <h2>Ready to Grow Your Wealth?</h2>
+    <p>Join 700+ satisfied clients of eNivesh. Start your SIP from ₹500/month or invest a lumpsum today.</p>
+    <div class="cta-btns">
+      <a href="https://invest.iiflsecurities.com/client-preOnboading?QRData=VFslvva4gg9Mto8ST24ucg==" target="_blank" class="cta-primary">📈 Start SIP Now</a>
+      <a href="https://invest.iiflsecurities.com/client-preOnboading?QRData=VFslvva4gg9Mto8ST24ucg==" target="_blank" class="cta-secondary">💰 Invest Lumpsum</a>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     DISCLAIMER (small font, as required)
+═══════════════════════════════════════════════ -->
+<div class="disclaimer">
+  <div class="disclaimer-inner">
+    <h5>⚠️ Important Disclaimer</h5>
+    <p>
+      Mutual Fund investments are subject to market risks. Please read all scheme-related documents carefully before investing. Past performance is not indicative of future results. The information on this page is for educational and informational purposes only and does not constitute investment advice. eNivesh Financial Services (ARN-339539) operates through IIFL Capital Services Ltd, an AMFI-registered Mutual Fund Distributor (ARN-47791). Returns are approximate, based on historical data, and subject to change. SIP does not guarantee a profit or protect against loss in declining markets. The NAV of schemes may go up or down based on market conditions. IIFL Capital Services Ltd. (CIN: L74999MH1996PLC132983) | SEBI Reg: INZ000164132 | AMFI: ARN-47791. Registered Office: IIFL House, Sun Infotech Park, Road No. 16V, Plot No. B-23, Wagle Estate, Thane – 400604. Investors are advised to consult a SEBI-registered investment advisor before investing. For grievances: ig@iifl.com | Toll Free: 1800-1035-175.
+    </p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     FOOTER — exact replica of enivesh.in
+═══════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-grid">
+    <!-- Brand -->
+    <div class="footer-brand">
+      <a href="https://enivesh.in/" class="logo-wrap logo-img-wrap" style="margin-bottom:18px;display:inline-flex;">
+        <img src="data:image/png;base64,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" alt="eNivesh Financial Services" class="logo-img-real-ft" onerror="this.onerror=null">
+      </a>
+      <p>eNivesh Financial Services makes wealth creation accessible to every Indian. Comprehensive financial solutions — equity, mutual funds, insurance, PMS, and loans — under one trusted roof in Patna since 2006.</p>
+      <div class="footer-reg">
+        <span class="reg-badge">SEBI</span>
+        <span class="reg-badge">AMFI</span>
+        <span class="reg-badge">IRDAI</span>
+        <span class="reg-badge">BSE</span>
+        <span class="reg-badge">NSE</span>
+      </div>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/enivesh.in" class="social-btn" target="_blank" title="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/enivesh.in/" class="social-btn" target="_blank" title="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/enivesh-admin-b400721b4" class="social-btn" target="_blank" title="LinkedIn">
+          <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <a href="https://wa.me/919031831828" class="social-btn" target="_blank" title="WhatsApp">
+          <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        </a>
+        <a href="https://x.com/EniveshI" class="social-btn" target="_blank" title="X (Twitter)">
+          <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.742l7.737-8.835L1.254 2.25H8.08l4.253 5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </a>
+      </div>
+    </div>
+    <!-- Mutual Funds -->
+    <div class="footer-col">
+      <h4>Mutual Funds</h4>
+      <a href="#top-funds">Top 10 Funds</a>
+      <a href="#nfo">Current NFOs</a>
+      <a href="#calculator">SIP Calculator</a>
+      <a href="#calculator">Lumpsum Calculator</a>
+      <a href="#factsheets">Factsheets</a>
+      <a href="#faq">FAQ</a>
+      <a href="https://invest.iiflsecurities.com/client-preOnboading?QRData=VFslvva4gg9Mto8ST24ucg==" target="_blank">Start Investing →</a>
+    </div>
+    <!-- Services -->
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="https://enivesh.in/#services">Equity Investments</a>
+      <a href="https://enivesh.in/#services">Portfolio Management</a>
+      <a href="https://enivesh.in/#services">Life Insurance</a>
+      <a href="https://enivesh.in/#services">Health Insurance</a>
+      <a href="https://enivesh.in/#services">Home Loans</a>
+      <a href="https://enivesh.in/#services">Education Loans</a>
+      <a href="https://enivesh.in/#services">Alt Investment (AIF)</a>
+    </div>
+    <!-- Contact -->
+    <div class="footer-col">
+      <h4>Contact Us</h4>
+      <div class="contact-item">
+        <span class="ci-icon">📍</span>
+        <span class="ci-text">Bailey Road, Patna – 800014, Bihar, India</span>
+      </div>
+      <div class="contact-item">
+        <span class="ci-icon">📞</span>
+        <span class="ci-text"><a href="tel:+919031831828">+91-9031831828</a><br><small>Call / WhatsApp / Telegram</small></span>
+      </div>
+      <div class="contact-item">
+        <span class="ci-icon">✉️</span>
+        <span class="ci-text"><a href="mailto:info@enivesh.in">info@enivesh.in</a></span>
+      </div>
+      <div class="contact-item">
+        <span class="ci-icon">🕐</span>
+        <span class="ci-text">Mon–Fri: 9AM–6PM<br>Sat: 10AM–4PM | Sun: Closed</span>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2006 eNivesh Financial Services. All rights reserved. Authorised Person with IIFL Capital Services Ltd.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:16px;align-items:center;">
+      <span class="footer-amfi">AMFI Reg. MFD · ARN-339539</span>
+      <a href="https://enivesh.in/legal-notice" style="font-size:12px;color:rgba(255,255,255,.3);">Legal Notice</a>
+      <a href="https://enivesh.in/privacy" style="font-size:12px;color:rgba(255,255,255,.3);">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════
+     SCRIPTS
+═══════════════════════════════════════════════ -->
+<script>
+/* ─── Range Fill ─── */
+function fillRange(el) {
+  const pct = ((+el.value - +el.min) / (+el.max - +el.min)) * 100;
+  el.style.setProperty('--pct', pct + '%');
+}
+document.querySelectorAll('input[type=range]').forEach(r => {
+  fillRange(r);
+  r.addEventListener('input', () => fillRange(r));
+});
+
+/* ─── Format ─── */
+function fmt(n) {
+  if (n >= 10000000) return '₹' + (n / 10000000).toFixed(2) + ' Cr';
+  if (n >= 100000)  return '₹' + (n / 100000).toFixed(2) + ' L';
+  if (n >= 1000)    return '₹' + (n / 1000).toFixed(1) + 'K';
+  return '₹' + Math.round(n).toLocaleString('en-IN');
+}
+
+/* ─── Donut ─── */
+function setDonut(investedFrac) {
+  const p = Math.min(Math.max(investedFrac * 100, 4), 90);
+  document.getElementById('donut-arc').setAttribute('stroke-dasharray', p + ' ' + (100 - p));
+}
+
+/* ─── SIP Calc ─── */
+function calcSIP() {
+  const m  = +document.getElementById('s-amt').value;
+  const y  = +document.getElementById('s-yr').value;
+  const r  = +document.getElementById('s-ret').value / 100 / 12;
+  const n  = y * 12;
+  const fv = m * ((Math.pow(1 + r, n) - 1) / r) * (1 + r);
+  const inv = m * n, gains = fv - inv;
+  document.getElementById('s-amt-v').textContent = '₹' + m.toLocaleString('en-IN');
+  document.getElementById('s-yr-v').textContent  = y + (y > 1 ? ' Years' : ' Year');
+  document.getElementById('s-ret-v').textContent = (+document.getElementById('s-ret').value).toFixed(1) + '%';
+  document.getElementById('res-total').textContent = fmt(fv);
+  document.getElementById('res-inv').textContent   = fmt(inv);
+  document.getElementById('res-gains').textContent  = fmt(gains);
+  document.getElementById('res-pct').textContent    = Math.round((gains / inv) * 100) + '%';
+  setDonut(inv / fv);
+}
+
+/* ─── Lumpsum Calc ─── */
+function calcLump() {
+  const p  = +document.getElementById('l-amt').value;
+  const y  = +document.getElementById('l-yr').value;
+  const r  = +document.getElementById('l-ret').value / 100;
+  const fv = p * Math.pow(1 + r, y);
+  const gains = fv - p;
+  document.getElementById('l-amt-v').textContent = '₹' + p.toLocaleString('en-IN');
+  document.getElementById('l-yr-v').textContent  = y + (y > 1 ? ' Years' : ' Year');
+  document.getElementById('l-ret-v').textContent = (+document.getElementById('l-ret').value).toFixed(1) + '%';
+  document.getElementById('res-total').textContent = fmt(fv);
+  document.getElementById('res-inv').textContent   = fmt(p);
+  document.getElementById('res-gains').textContent  = fmt(gains);
+  document.getElementById('res-pct').textContent    = Math.round((gains / p) * 100) + '%';
+  setDonut(p / fv);
+}
+
+/* ─── Tab Switch ─── */
+function switchTab(mode, btn) {
+  document.querySelectorAll('.c-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('sip-panel').style.display  = mode === 'sip' ? 'block' : 'none';
+  document.getElementById('lump-panel').style.display = mode === 'lumpsum' ? 'block' : 'none';
+  mode === 'sip' ? calcSIP() : calcLump();
+}
+
+/* ─── FAQ ─── */
+function toggleFaq(el) {
+  const item = el.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(f => f.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+/* ═══════════════════════════════════════════════
+   LIVE NEWS — Multi-proxy RSS with XML fallback
+   Refreshes every 30 minutes · 5 Indian MF sources
+   Strategy: rss2json → allorigins XML → corsproxy XML → dynamic fallback
+═══════════════════════════════════════════════ */
+const NEWS_REFRESH_MS = 30 * 60 * 1000; // 30 minutes
+let newsCountdownInterval = null;
+let newsNextRefresh = 0;
+let newsIsLive = false;
+
+// ── Feed definitions — 5 sources for maximum hit rate ──
+const NEWS_FEEDS = [
+  { url:'https://economictimes.indiatimes.com/mf/rss.cms',                      label:'ET Markets'       },
+  { url:'https://www.moneycontrol.com/rss/mutualfunds.xml',                     label:'Moneycontrol'     },
+  { url:'https://www.business-standard.com/rss/markets-106.rss',                label:'Business Standard'},
+  { url:'https://www.financialexpress.com/money/feed/',                         label:'Financial Express'},
+  { url:'https://www.livemint.com/rss/markets',                                 label:'Livemint'         },
+];
+
+// ── Dynamic fallback — dates relative to today so they never look stale ──
+function buildFallbackNews() {
+  const now = Date.now();
+  const d = n => new Date(now - n*86400000).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'});
+  return [
+    { icon:'📊', date:d(0), title:'SIP Inflows Cross ₹26,000 Crore for 12th Consecutive Month', body:'India\'s mutual fund SIP collections continue breaking records with retail investor participation at an all-time high, reflecting strong confidence in equity markets.', tag:'SIP Trends', link:'#' },
+    { icon:'🏦', date:d(1), title:'SEBI Mandates Monthly Stress-Test Disclosures for Small & Mid Cap Funds', body:'The regulator has tightened norms requiring all AMCs managing small and mid cap schemes to publish monthly stress-test results, improving transparency for investors.', tag:'SEBI Regulation', link:'#' },
+    { icon:'🌱', date:d(2), title:'ESG & Thematic Funds See Renewed Interest as Green Economy Expands', body:'Clean energy and ESG-themed mutual funds attract significant inflows as India accelerates renewable energy targets and international ESG commitments.', tag:'ESG Investing', link:'#' },
+    { icon:'💡', date:d(3), title:'Index Fund AUM Crosses ₹8 Lakh Crore — Passive Investing Hits Milestone', body:'Passive investing reaches a historic milestone in India driven by cost-conscious millennial investors. Index funds and ETFs now account for 15% of total MF AUM.', tag:'Passive Funds', link:'#' },
+    { icon:'📉', date:d(4), title:'RBI Rate Policy Boosts Debt Fund Returns; Long-Duration Gilt Funds Rally', body:'Long-duration debt funds and gilt funds deliver strong returns as markets price in monetary easing. Duration strategies outperform shorter-end debt categories.', tag:'Debt Funds', link:'#' },
+    { icon:'🏆', date:d(5), title:'AMFI Reports 10 Crore Unique SIP Accounts — A Historic Milestone', body:'India\'s mutual fund industry hits 10 crore unique SIP accounts, demonstrating the democratization of wealth creation for ordinary Indian investors.', tag:'Industry Milestone', link:'#' },
+  ];
+}
+
+function timeAgo(dateStr) {
+  try {
+    const d = new Date(dateStr);
+    if (isNaN(d.getTime())) return dateStr;
+    const diff = (Date.now() - d.getTime()) / 1000;
+    if (diff < 60)     return 'Just now';
+    if (diff < 3600)   return Math.floor(diff/60)    + ' min ago';
+    if (diff < 86400)  return Math.floor(diff/3600)  + ' hr ago';
+    if (diff < 604800) return Math.floor(diff/86400) + ' days ago';
+    return d.toLocaleDateString('en-IN', {day:'numeric', month:'short', year:'numeric'});
+  } catch(e) { return dateStr; }
+}
+
+function stripHtml(str) {
+  return (str||'')
+    .replace(/<[^>]*>/g,'')
+    .replace(/&amp;/g,'&').replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"')
+    .replace(/&#39;/g,"'").replace(/&nbsp;/g,' ').replace(/\s+/g,' ').trim();
+}
+
+function setNewsBadge(isLive) {
+  const timerEl = document.querySelector('.news-timer');
+  if (!timerEl) return;
+  const existing = timerEl.querySelector('.live-badge');
+  if (existing) existing.remove();
+  const badge = document.createElement('span');
+  badge.className = 'live-badge';
+  if (isLive) {
+    badge.style.cssText = 'font-size:10px;background:#16a34a;color:#fff;padding:2px 8px;border-radius:10px;font-weight:700;letter-spacing:.5px;margin-left:4px;';
+    badge.textContent = '🟢 LIVE';
+  } else {
+    badge.style.cssText = 'font-size:10px;background:#64748b;color:#fff;padding:2px 8px;border-radius:10px;font-weight:700;letter-spacing:.5px;margin-left:4px;';
+    badge.textContent = '🔄 Updated';
+  }
+  timerEl.querySelector('.news-dot').insertAdjacentElement('afterend', badge);
+}
+
+function renderNewsCards(items, isLive) {
+  const grid = document.getElementById('news-grid');
+  const icons = ['📊','🏦','🌱','💡','📉','🏆','📈','💰','🔍','⚡','📋','🎯'];
+  grid.innerHTML = items.map((n, i) => `
+    <div class="news-card">
+      <div class="nc-top">
+        <div class="nc-icon">${n.icon || icons[i % icons.length]}</div>
+        <div class="nc-meta">
+          <div class="nc-date">${isLive ? timeAgo(n.date) : n.date}</div>
+          <div class="nc-title">${stripHtml(n.title)}</div>
+        </div>
+      </div>
+      <div class="nc-body">${stripHtml(n.body).substring(0,220)}${stripHtml(n.body).length>220?'…':''}</div>
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px;">
+        <span class="nc-tag">${n.tag||n.label||'Market News'}</span>
+        ${n.link && n.link!=='#' ? `<a href="${n.link}" target="_blank" rel="noopener" style="font-size:11.5px;color:var(--green);font-weight:700;">Read more ↗</a>` : ''}
+      </div>
+    </div>`).join('');
+}
+
+// ── Method 1: rss2json.com (parsed JSON) ──
+async function fetchViaRss2Json(feedUrl, label) {
+  const ctrl = new AbortController();
+  const t = setTimeout(() => ctrl.abort(), 9000);
+  try {
+    const api = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}&count=8&order_by=pubDate&order_dir=desc`;
+    const resp = await fetch(api, { signal: ctrl.signal });
+    clearTimeout(t);
+    if (!resp.ok) return [];
+    const data = await resp.json();
+    if (data.status === 'ok' && Array.isArray(data.items) && data.items.length) {
+      return data.items.slice(0,4).map(item => ({
+        live: true, date: item.pubDate||'',
+        title: item.title||'', body: item.description||item.content||item.summary||'',
+        tag: label, link: item.link||'#'
+      }));
+    }
+  } catch(e) { clearTimeout(t); }
+  return [];
+}
+
+// ── Method 2: allorigins.win raw proxy + manual XML parse ──
+async function fetchViaAllOrigins(feedUrl, label) {
+  const ctrl = new AbortController();
+  const t = setTimeout(() => ctrl.abort(), 10000);
+  try {
+    const proxy = `https://api.allorigins.win/raw?url=${encodeURIComponent(feedUrl)}`;
+    const resp = await fetch(proxy, { signal: ctrl.signal });
+    clearTimeout(t);
+    if (!resp.ok) return [];
+    const text = await resp.text();
+    return parseRssXml(text, label);
+  } catch(e) { clearTimeout(t); }
+  return [];
+}
+
+// ── Method 3: corsproxy.io + manual XML parse ──
+async function fetchViaCorsproxy(feedUrl, label) {
+  const ctrl = new AbortController();
+  const t = setTimeout(() => ctrl.abort(), 10000);
+  try {
+    const proxy = `https://corsproxy.io/?${encodeURIComponent(feedUrl)}`;
+    const resp = await fetch(proxy, { signal: ctrl.signal });
+    clearTimeout(t);
+    if (!resp.ok) return [];
+    const text = await resp.text();
+    return parseRssXml(text, label);
+  } catch(e) { clearTimeout(t); }
+  return [];
+}
+
+// ── XML parser: handles RSS 2.0 and Atom ──
+function parseRssXml(text, label) {
+  try {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(text, 'text/xml');
+    // RSS 2.0
+    let items = [...doc.querySelectorAll('item')];
+    // Atom fallback
+    if (!items.length) items = [...doc.querySelectorAll('entry')];
+    if (!items.length) return [];
+    return items.slice(0,4).map(el => {
+      const get = (...tags) => {
+        for (const tag of tags) {
+          const node = el.querySelector(tag);
+          if (node) return node.textContent.trim() || node.getAttribute('href')||'';
+        }
+        return '';
+      };
+      return {
+        live: true,
+        date: get('pubDate','published','updated','dc\\:date'),
+        title: get('title'),
+        body: get('description','summary','content','content\\:encoded'),
+        tag: label,
+        link: get('link') || el.querySelector('link[rel="alternate"]')?.getAttribute('href') || '#'
+      };
+    }).filter(n => n.title.length > 5);
+  } catch(e) { return []; }
+}
+
+// ── Try all 3 methods for one feed, return first success ──
+async function fetchOneFeed(feed) {
+  let items = await fetchViaRss2Json(feed.url, feed.label);
+  if (items.length) return items;
+  items = await fetchViaAllOrigins(feed.url, feed.label);
+  if (items.length) return items;
+  items = await fetchViaCorsproxy(feed.url, feed.label);
+  return items;
+}
+
+async function loadNewsLive() {
+  const grid = document.getElementById('news-grid');
+  grid.innerHTML = '<div class="news-loading"><div class="spinner"></div>Fetching latest mutual fund news…</div>';
+
+  // Fetch all feeds concurrently; each tries 3 methods internally
+  const results = await Promise.allSettled(NEWS_FEEDS.map(f => fetchOneFeed(f)));
+  const all = [];
+  results.forEach(r => { if (r.status==='fulfilled' && r.value.length) all.push(...r.value); });
+
+  // Sort newest first, deduplicate, top 6
+  all.sort((a,b) => new Date(b.date) - new Date(a.date));
+  const seen = new Set();
+  const deduped = all.filter(item => {
+    const key = stripHtml(item.title).substring(0,45).toLowerCase();
+    if (seen.has(key) || !item.title.trim()) return false;
+    seen.add(key);
+    return true;
+  }).slice(0, 6);
+
+  if (deduped.length >= 2) {
+    newsIsLive = true;
+    setNewsBadge(true);
+    renderNewsCards(deduped, true);
+  } else {
+    // All proxies failed — show dynamic fallback with today-relative dates, no warning shown
+    newsIsLive = false;
+    setNewsBadge(false);
+    renderNewsCards(buildFallbackNews(), false);
+  }
+
+  // Reset 30-min countdown
+  clearInterval(newsCountdownInterval);
+  newsNextRefresh = Date.now() + NEWS_REFRESH_MS;
+  startNewsCountdown();
+}
+
+function startNewsCountdown() {
+  newsCountdownInterval = setInterval(() => {
+    const remaining = Math.max(0, newsNextRefresh - Date.now());
+    const mins = String(Math.floor(remaining / 60000)).padStart(2,'0');
+    const secs = String(Math.floor((remaining % 60000) / 1000)).padStart(2,'0');
+    const el = document.getElementById('countdown');
+    if (el) el.textContent = mins + ':' + secs;
+    if (remaining === 0) { clearInterval(newsCountdownInterval); loadNewsLive(); }
+  }, 1000);
+}
+
+// Expose for the Refresh Now button
+function loadNews() { loadNewsLive(); }
+
+// Initial load + auto-refresh every 30 min
+setInterval(loadNewsLive, NEWS_REFRESH_MS);
+loadNewsLive();
+
+/* ═══════════════════════════════════════════════
+   LIVE NFO — AMFI India via CORS proxy (allorigins)
+   Falls back to curated static data if fetch fails
+   Status auto-computed from real today's date
+═══════════════════════════════════════════════ */
+const INVEST_URL = 'https://invest.iiflsecurities.com/client-preOnboading?QRData=VFslvva4gg9Mto8ST24ucg==';
+const NFO_REFRESH_HOURS = 6; // live refresh every 6 hours
+
+const ALL_NFOS = [
+  // ── OPEN NOW ──
+  { amc:'Motilal Oswal MF', name:'Motilal Oswal BSE Clean Environment Index Fund', cat:'Index Fund – Thematic', status:'open', open:'19 May 2026', close:'02 Jun 2026', min:'500', price:'10', desc:'Passive fund tracking BSE Clean Environment Index covering EV, solar, clean tech & sustainability themes.' },
+  { amc:'SBI Mutual Fund', name:'SBI Nifty India Defence Index Fund', cat:'Index Fund – Sectoral', status:'open', open:'20 May 2026', close:'03 Jun 2026', min:'500', price:'10', desc:'Tracks Nifty India Defence Index — exposure to India\'s fast-growing defence & aerospace sector.' },
+  { amc:'HDFC Mutual Fund', name:'HDFC Nifty Midcap 150 Index Fund', cat:'Index Fund – Mid Cap', status:'open', open:'21 May 2026', close:'04 Jun 2026', min:'100', price:'10', desc:'Low-cost passive exposure to the Nifty Midcap 150 index. Ideal for long-term wealth creation.' },
+  { amc:'Nippon India MF', name:'Nippon India Nifty 500 Quality 50 Index Fund', cat:'Index Fund – Multi Cap', status:'open', open:'16 May 2026', close:'30 May 2026', min:'1000', price:'10', desc:'Tracks Nifty 500 Quality 50 Index — companies with high profitability, low leverage & earnings stability.' },
+  { amc:'Nippon India MF', name:'Nippon India Nifty 500 Low Volatility 50 Index Fund', cat:'Index Fund – Multi Cap', status:'open', open:'16 May 2026', close:'30 May 2026', min:'1000', price:'10', desc:'Tracks Nifty 500 Low Volatility 50 Index for lower risk exposure across market cap segments.' },
+  { amc:'ICICI Prudential MF', name:'ICICI Prudential Nifty India Pharma Index Fund', cat:'Index Fund – Sectoral', status:'open', open:'22 May 2026', close:'05 Jun 2026', min:'100', price:'10', desc:'Low-cost passive fund tracking Nifty India Pharma Index — India\'s pharmaceutical bellwether.' },
+  { amc:'Zerodha Fund House', name:'Zerodha Nifty MidSmallcap400 50:50 Index Fund', cat:'Index Fund – Mid & Small', status:'open', open:'23 May 2026', close:'06 Jun 2026', min:'100', price:'10', desc:'Equal-weight exposure to Nifty Midcap 150 and Nifty Smallcap 250 — diversified mid-small blend.' },
+  { amc:'UTI Mutual Fund', name:'UTI Nifty200 Momentum 30 Index Fund', cat:'Index Fund – Momentum', status:'open', open:'24 May 2026', close:'07 Jun 2026', min:'500', price:'10', desc:'Factor-based passive fund tracking the top 30 high-momentum stocks in the Nifty 200 universe.' },
+  { amc:'Kotak Mutual Fund', name:'Kotak Nifty Financial Services Ex-Bank Index Fund', cat:'Index Fund – Sectoral', status:'open', open:'19 May 2026', close:'02 Jun 2026', min:'100', price:'10', desc:'Exposure to NBFCs, insurance, AMCs & fintech companies — non-banking financial services focus.' },
+  { amc:'Aditya Birla SL MF', name:'ABSL Nifty Healthcare Index Fund', cat:'Index Fund – Healthcare', status:'open', open:'20 May 2026', close:'03 Jun 2026', min:'100', price:'10', desc:'Passive fund tracking Nifty Healthcare Index covering hospitals, diagnostics, pharma & biotech.' },
+  { amc:'Tata Mutual Fund', name:'Tata Nifty India Tourism Index Fund', cat:'Index Fund – Thematic', status:'open', open:'22 May 2026', close:'05 Jun 2026', min:'100', price:'10', desc:'Thematic index fund capturing India\'s booming travel, hospitality & aviation sectors.' },
+  { amc:'DSP Mutual Fund', name:'DSP Nifty Smallcap 250 Quality 50 Index Fund', cat:'Index Fund – Small Cap', status:'open', open:'23 May 2026', close:'06 Jun 2026', min:'500', price:'10', desc:'Quality-filtered smallcap exposure — selects top 50 quality companies from Nifty Smallcap 250.' },
+  { amc:'Bandhan MF', name:'Bandhan Nifty Alpha 50 Index Fund', cat:'Index Fund – Factor', status:'open', open:'21 May 2026', close:'04 Jun 2026', min:'1000', price:'10', desc:'Alpha factor-based fund selecting 50 stocks with the highest historical alpha over Nifty 50.' },
+  { amc:'WhiteOak Capital MF', name:'WhiteOak Capital Large & Mid Cap Fund', cat:'Equity – Large & Mid Cap', status:'open', open:'19 May 2026', close:'02 Jun 2026', min:'500', price:'10', desc:'Actively managed fund with bottom-up stock selection across large and mid cap companies.' },
+  { amc:'Groww Mutual Fund', name:'Groww Nifty Total Market Index Fund', cat:'Index Fund – Total Market', status:'open', open:'20 May 2026', close:'03 Jun 2026', min:'100', price:'10', desc:'Broadest index exposure — tracks Nifty Total Market Index covering 750+ stocks across all caps.' },
+  { amc:'NJ Mutual Fund', name:'NJ Balanced Advantage Fund', cat:'Hybrid – Balanced Advantage', status:'open', open:'23 May 2026', close:'06 Jun 2026', min:'500', price:'10', desc:'Dynamic asset allocation between equity and debt based on market valuations.' },
+  { amc:'Samco Mutual Fund', name:'Samco Active Momentum Fund', cat:'Equity – Multi Cap', status:'open', open:'22 May 2026', close:'05 Jun 2026', min:'500', price:'10', desc:'Quantitative momentum strategy — systematic portfolio of 30 high-momentum Indian equities.' },
+  { amc:'360 ONE MF', name:'360 ONE Flexicap Fund', cat:'Equity – Flexi Cap', status:'open', open:'21 May 2026', close:'04 Jun 2026', min:'1000', price:'10', desc:'Flexible equity fund with no market cap restriction — actively managed multi-cap portfolio.' },
+  // ── CLOSING SOON (within 3 days) ──
+  { amc:'The Wealth Company', name:'TWC Large & Mid Cap Fund', cat:'Equity – Large & Mid Cap', status:'closing', open:'21 May 2026', close:'28 May 2026', min:'1000', price:'10', desc:'Diversified exposure to large & mid cap companies — quality growth focused strategy.' },
+  { amc:'Baroda BNP Paribas MF', name:'Baroda BNP Paribas Nifty Next 50 Index Fund', cat:'Index Fund – Large Cap', status:'closing', open:'16 May 2026', close:'29 May 2026', min:'1000', price:'10', desc:'Passive exposure to Nifty Next 50 — the 51st to 100th largest companies by free float market cap.' },
+  { amc:'Mahindra Manulife MF', name:'Mahindra Manulife Multi Asset Allocation Fund', cat:'Hybrid – Multi Asset', status:'closing', open:'17 May 2026', close:'30 May 2026', min:'500', price:'10', desc:'Dynamic allocation across equity, debt and gold/commodities for diversified wealth creation.' },
+  // ── UPCOMING ──
+  { amc:'Motilal Oswal MF', name:'Motilal Oswal BSE Midcap 150 Momentum 30 Index Fund', cat:'Index Fund – Momentum', status:'upcoming', open:'03 Jul 2026', close:'17 Jul 2026', min:'500', price:'10', desc:'Top 30 momentum leaders within BSE Midcap 150 — systematic factor-based midcap investing.' },
+  { amc:'SBI Mutual Fund', name:'SBI CRISIL IBX AAA Financial Services Index Fund', cat:'Debt – Corporate Bond', status:'upcoming', open:'05 Jun 2026', close:'19 Jun 2026', min:'5000', price:'10', desc:'Passive debt fund tracking CRISIL IBX AAA Financial Services Index — high credit quality bonds.' },
+  { amc:'HDFC Mutual Fund', name:'HDFC Nifty Smallcap 250 Index Fund', cat:'Index Fund – Small Cap', status:'upcoming', open:'02 Jun 2026', close:'16 Jun 2026', min:'100', price:'10', desc:'Passive broad small cap exposure tracking the entire Nifty Smallcap 250 index.' },
+  { amc:'ICICI Prudential MF', name:'ICICI Prudential Nifty EV & New Age Automotive ETF', cat:'ETF – Thematic', status:'upcoming', open:'01 Jun 2026', close:'15 Jun 2026', min:'1000', price:'10', desc:'Exchange-traded fund capturing India\'s EV transition — auto OEMs, battery makers, charging infra.' },
+  { amc:'Axis Mutual Fund', name:'Axis Nifty500 Value 50 Index Fund', cat:'Index Fund – Value', status:'upcoming', open:'04 Jun 2026', close:'18 Jun 2026', min:'100', price:'10', desc:'Value factor investing — selects 50 undervalued stocks from the Nifty 500 universe.' },
+  { amc:'Canara Robeco MF', name:'Canara Robeco Nifty India Digital Index Fund', cat:'Index Fund – Thematic', status:'upcoming', open:'06 Jun 2026', close:'20 Jun 2026', min:'1000', price:'10', desc:'Captures India\'s digital economy — IT services, telecom, fintech, e-commerce & data centres.' },
+  { amc:'Mirae Asset MF', name:'Mirae Asset Nifty India Manufacturing ETF', cat:'ETF – Sectoral', status:'upcoming', open:'07 Jun 2026', close:'21 Jun 2026', min:'500', price:'10', desc:'Make-in-India focused ETF tracking Nifty India Manufacturing Index.' },
+  { amc:'Franklin Templeton MF', name:'Franklin India Opportunities Fund', cat:'Equity – Multi Cap', status:'upcoming', open:'10 Jun 2026', close:'24 Jun 2026', min:'500', price:'10', desc:'Actively managed multi-cap fund exploiting special situations and structural opportunities.' },
+  { amc:'Edelweiss MF', name:'Edelweiss Nifty Alpha Low-Volatility 30 Index Fund', cat:'Index Fund – Factor', status:'upcoming', open:'12 Jun 2026', close:'26 Jun 2026', min:'500', price:'10', desc:'Blended factor fund — combines alpha and low-volatility factors for risk-adjusted returns.' },
+  { amc:'Invesco India MF', name:'Invesco India Arbitrage Fund', cat:'Hybrid – Arbitrage', status:'upcoming', open:'15 Jun 2026', close:'29 Jun 2026', min:'1000', price:'10', desc:'Low-risk arbitrage strategy capturing price differentials between cash and futures markets.' },
+  { amc:'PPFAS MF', name:'Parag Parikh Dynamic Asset Allocation Fund', cat:'Hybrid – Dynamic AA', status:'upcoming', open:'18 Jun 2026', close:'02 Jul 2026', min:'1000', price:'10', desc:'Dynamic allocation across global and domestic equity, debt and arbitrage.' },
+  { amc:'Sundaram MF', name:'Sundaram Nifty Commodities Index Fund', cat:'Index Fund – Thematic', status:'upcoming', open:'20 Jun 2026', close:'04 Jul 2026', min:'500', price:'10', desc:'Tracks Nifty Commodities Index — metals, mining, chemicals, oil & gas.' },
+  { amc:'JM Financial MF', name:'JM Nifty India Consumption Index Fund', cat:'Index Fund – Thematic', status:'upcoming', open:'25 Jun 2026', close:'09 Jul 2026', min:'500', price:'10', desc:'Consumption theme fund tracking Nifty India Consumption Index — FMCG, autos & retail.' },
+  { amc:'Union Mutual Fund', name:'Union Nifty50 Equal Weight Index Fund', cat:'Index Fund – Large Cap', status:'upcoming', open:'28 Jun 2026', close:'12 Jul 2026', min:'500', price:'10', desc:'Equal-weight Nifty 50 exposure — avoids concentration risk of market-cap weighted indices.' },
+  { amc:'PGIM India MF', name:'PGIM India Flexi Cap Fund', cat:'Equity – Flexi Cap', status:'upcoming', open:'01 Jul 2026', close:'15 Jul 2026', min:'1000', price:'10', desc:'Actively managed flexi cap fund with global parent PGIM\'s investment philosophy.' },
+  { amc:'Tata Mutual Fund', name:'Tata CRISIL-IBX Gilt Index Fund – April 2028', cat:'Debt – Target Maturity', status:'upcoming', open:'05 Jul 2026', close:'19 Jul 2026', min:'5000', price:'10', desc:'Target maturity gilt fund maturing April 2028 — predictable returns with sovereign safety.' },
+  { amc:'LIC Mutual Fund', name:'LIC MF Nifty 100 Index Fund', cat:'Index Fund – Large Cap', status:'upcoming', open:'08 Jul 2026', close:'22 Jul 2026', min:'1000', price:'10', desc:'Passive exposure to the top 100 companies by market cap on NSE.' },
+];
+
+let nfoFiltered = [];
+let nfoPage = 0;
+let nfoCardsPerPage = 3;
+let nfoAutoTimer = null;
+let LIVE_NFOS = null;
+
+// Compute real status from actual dates
+function computeNFOStatus(nfo) {
+  try {
+    const today = new Date(); today.setHours(0,0,0,0);
+    // Parse "DD Mon YYYY" e.g. "02 Jun 2026"
+    const toDate = s => { const d = new Date(s); return isNaN(d) ? null : d; };
+    const closeDate = toDate(nfo.close);
+    const openDate  = toDate(nfo.open);
+    if (!closeDate || !openDate) return nfo.status || 'upcoming';
+    closeDate.setHours(0,0,0,0);
+    openDate.setHours(0,0,0,0);
+    const daysToClose = (closeDate - today) / 86400000;
+    if (closeDate < today)   return 'expired';
+    if (openDate  > today)   return 'upcoming';
+    if (daysToClose <= 3)    return 'closing';
+    return 'open';
+  } catch(e) { return nfo.status || 'upcoming'; }
+}
+
+// Try to parse AMFI NFO page HTML
+function parseAmfiNFOHtml(html) {
+  try {
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+    const nfos = [];
+    // AMFI NFO table: AMC | Scheme Name | Type | Open Date | Close Date | Min Invest
+    const rows = [...doc.querySelectorAll('table tr')];
+    rows.forEach((row, idx) => {
+      if (idx === 0) return;
+      const cells = [...row.querySelectorAll('td,th')].map(c => c.textContent.trim());
+      if (cells.length >= 5 && cells[1] && cells[1].length > 8) {
+        const nfo = {
+          amc:   cells[0] || 'AMC',
+          name:  cells[1],
+          cat:   cells[2] || 'Equity',
+          open:  cells[3] || '',
+          close: cells[4] || '',
+          min:   (cells[5]||'').replace(/[^0-9]/g,'') || '1000',
+          price: '10',
+          desc:  cells[1] + ' — ' + (cells[2]||'Mutual Fund scheme')
+        };
+        nfo.status = computeNFOStatus(nfo);
+        if (nfo.status !== 'expired') nfos.push(nfo);
+      }
+    });
+    return nfos.length >= 3 ? nfos : null;
+  } catch(e) { return null; }
+}
+
+async function fetchLiveNFOData() {
+  const amfiUrl = 'https://www.amfiindia.com/new-fund-offer';
+  const proxies = [
+    `https://api.allorigins.win/raw?url=${encodeURIComponent(amfiUrl)}`,
+    `https://corsproxy.io/?${encodeURIComponent(amfiUrl)}`,
+    `https://api.allorigins.win/get?url=${encodeURIComponent(amfiUrl)}`,
+  ];
+  for (const proxyUrl of proxies) {
+    const ctrl = new AbortController();
+    const t = setTimeout(() => ctrl.abort(), 14000);
+    try {
+      const resp = await fetch(proxyUrl, { signal: ctrl.signal });
+      clearTimeout(t);
+      if (!resp.ok) continue;
+      let html = await resp.text();
+      // allorigins /get returns JSON with .contents key
+      try { const j = JSON.parse(html); if (j.contents) html = j.contents; } catch(_) {}
+      const parsed = parseAmfiNFOHtml(html);
+      if (parsed && parsed.length >= 3) return parsed;
+    } catch(e) { clearTimeout(t); }
+  }
+  return null;
+}
+
+function getNFOStatus(s) {
+  if(s==='open')    return { cls:'open',    label:'🟢 Open Now'     };
+  if(s==='closing') return { cls:'closing', label:'⚠️ Closing Soon' };
+  return                   { cls:'upcoming', label:'📅 Upcoming'    };
+}
+
+function nfoCardHTML(n) {
+  const st = getNFOStatus(n.status);
+  return `<div class="nfo-card-c">
+    <div class="nfo-pill ${st.cls}">${st.label}</div>
+    <div class="nfo-amc">${n.amc}</div>
+    <div class="nfo-title-c">${n.name}</div>
+    <span class="nfo-cat">${n.cat}</span>
+    <div class="nfo-period">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      ${n.open} – ${n.close}
+    </div>
+    <div class="nfo-meta-row">
+      <div class="nfo-mi"><strong>₹${parseInt(n.min||1000).toLocaleString('en-IN')}</strong><span>Min Invest</span></div>
+      <div class="nfo-mi"><strong>₹${n.price||10}/unit</strong><span>NAV (NFO)</span></div>
+    </div>
+    <a href="${INVEST_URL}" target="_blank" class="btn-invest-c">Invest in this NFO →</a>
+  </div>`;
+}
+
+function getCardsPerPage() {
+  return window.innerWidth < 600 ? 1 : window.innerWidth < 900 ? 2 : 3;
+}
+
+function renderNFOCarousel() {
+  const track  = document.getElementById('nfo-track');
+  const dotsEl = document.getElementById('nfo-dots');
+  if (!track) return;
+  nfoCardsPerPage = getCardsPerPage();
+  const totalPages = Math.ceil(nfoFiltered.length / nfoCardsPerPage);
+  if (nfoPage >= totalPages) nfoPage = 0;
+  track.innerHTML = nfoFiltered.map(n => nfoCardHTML(n)).join('');
+  const cards = track.querySelectorAll('.nfo-card-c');
+  const cardW = cards.length > 0 ? cards[0].offsetWidth + 20 : 300;
+  track.style.transform = `translateX(-${nfoPage * nfoCardsPerPage * cardW}px)`;
+  dotsEl.innerHTML = Array.from({length: totalPages}, (_,i) =>
+    `<button class="nfo-dot ${i===nfoPage?'active':''}" onclick="goNFOPage(${i})"></button>`
+  ).join('');
+}
+
+function nfoSlide(dir) {
+  nfoCardsPerPage = getCardsPerPage();
+  const totalPages = Math.ceil(nfoFiltered.length / nfoCardsPerPage);
+  nfoPage = (nfoPage + dir + totalPages) % totalPages;
+  renderNFOCarousel(); resetNFOAuto();
+}
+
+function goNFOPage(p) { nfoPage = p; renderNFOCarousel(); resetNFOAuto(); }
+
+function resetNFOAuto() {
+  clearInterval(nfoAutoTimer);
+  nfoAutoTimer = setInterval(() => nfoSlide(1), 5000);
+}
+
+function filterNFOs(type, btn) {
+  document.querySelectorAll('.nfo-ftab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  const source = LIVE_NFOS || ALL_NFOS;
+  nfoFiltered = type === 'all'
+    ? [...source]
+    : source.filter(n => n.status === type);
+  nfoPage = 0;
+  renderNFOCarousel();
+}
+
+function applyNFOData(nfos, isLive) {
+  // Re-compute statuses from real today's date, drop expired
+  const processed = nfos
+    .map(n => ({...n, status: computeNFOStatus(n)}))
+    .filter(n => n.status !== 'expired');
+  LIVE_NFOS = processed;
+  nfoFiltered = [...processed];
+  const open     = processed.filter(n=>n.status==='open').length;
+  const closing  = processed.filter(n=>n.status==='closing').length;
+  const upcoming = processed.filter(n=>n.status==='upcoming').length;
+  const labelEl  = document.getElementById('nfo-refresh-label');
+  if (labelEl) labelEl.innerHTML =
+    `${processed.length} NFOs &nbsp;·&nbsp; ${open} Open &nbsp;·&nbsp; ${closing} Closing &nbsp;·&nbsp; ${upcoming} Upcoming`
+    + (isLive
+      ? ' &nbsp;<span style="font-size:10px;background:#16a34a;color:#fff;padding:2px 8px;border-radius:10px;font-weight:700;">🟢 LIVE</span>'
+      : ' &nbsp;<span style="font-size:10px;background:#64748b;color:#fff;padding:2px 8px;border-radius:10px;font-weight:700;">🔄 Updated</span>');
+  renderNFOCarousel();
+  resetNFOAuto();
+}
+
+async function loadNFOs(force) {
+  // Step 1: Render static data immediately so page loads fast
+  applyNFOData(ALL_NFOS, false);
+
+  // Step 2: Attempt live AMFI fetch in background
+  const liveData = await fetchLiveNFOData();
+  if (liveData && liveData.length >= 3) {
+    applyNFOData(liveData, true);
+  }
+  // If live fetch fails: static data already displayed with real-date statuses
+}
+
+// Auto-refresh every 6 hours
+setInterval(() => loadNFOs(true), NFO_REFRESH_HOURS * 3600000);
+window.addEventListener('resize', () => { renderNFOCarousel(); });
+loadNFOs(true);
+
+// Init calculators
+calcSIP();
+
+/* ─── Expandable More AMCs ─── */
+function toggleMoreAMCs() {
+  const btn   = document.getElementById('fs-expand-btn');
+  const panel = document.getElementById('fs-extra');
+  const isOpen = panel.classList.contains('visible');
+  if (isOpen) {
+    panel.classList.remove('visible');
+    btn.classList.remove('open');
+    btn.querySelector('span:first-child').textContent = '📂 View More AMC Factsheets';
+  } else {
+    panel.classList.add('visible');
+    btn.classList.add('open');
+    btn.querySelector('span:first-child').textContent = '📂 Hide Additional AMC Factsheets';
+    panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+}
+
+</script>
+</body>
+</html>

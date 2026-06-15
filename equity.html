@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Equity Investments | eNivesh Financial Services</title>
+  <meta name="description" content="Invest in India's stock markets with expert guidance from eNivesh. Research-backed equity picks, live stock prices, IPO calendar, and portfolio management.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue:       #1DA1F2;
+      --blue-dark:  #0D7EC4;
+      --blue-deep:  #074E7A;
+      --blue-deeper:#052E49;
+      --blue-pale:  #E8F5FD;
+      --blue-light: #B3DEFA;
+      --navy:       #071C2C;
+      --navy-dark:  #040F18;
+      --white:      #FFFFFF;
+      --off-white:  #F5FAFE;
+      --gray-100:   #EEF5FB;
+      --gray-200:   #D0E6F5;
+      --gray-400:   #7AAEC9;
+      --gray-600:   #3D6E8A;
+      --gray-800:   #1A3A4D;
+      --accent:     #FF6B2B;
+      --green:      #1AAF6B;
+      --red:        #EF4444;
+      --gold:       #F59E0B;
+      --text:       #0D2233;
+      --text-mid:   #2D5A72;
+      --text-muted: #5A8FA8;
+      --radius:     8px;
+      --radius-lg:  16px;
+      --shadow-sm:  0 2px 8px rgba(13,126,196,0.10);
+      --shadow-md:  0 6px 24px rgba(13,126,196,0.14);
+      --shadow-lg:  0 16px 48px rgba(13,126,196,0.18);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Sora', sans-serif; font-size: 16px; background: var(--white); color: var(--text); overflow-x: hidden; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    h1, h2, h3 { font-family: 'Playfair Display', serif; color: var(--navy); line-height: 1.2; }
+    h4, h5 { font-family: 'Sora', sans-serif; color: var(--navy); }
+  a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(7,28,44,0.97); backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(29,161,242,0.15);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2rem; height: 70px;
+    }
+    .nav-logo img { height: 44px; width: auto; display: block; }
+    .nav-links { display: flex; align-items: center; gap: 2px; list-style: none; }
+    .nav-links a {
+      color: rgba(255,255,255,0.72); font-size: 14px; font-weight: 500;
+      padding: 8px 15px; border-radius: 6px; transition: color 0.2s, background 0.2s;
+    }
+    .nav-links a:hover { color: var(--blue); background: rgba(29,161,242,0.08); }
+    .nav-cta { background: var(--blue) !important; color: var(--white) !important; font-weight: 600 !important; border-radius: 6px; padding: 9px 20px !important; }
+    .nav-cta:hover { background: var(--blue-dark) !important; }
+    .nav-contact-btn { background: rgba(255,255,255,0.09) !important; color: rgba(255,255,255,0.9) !important; font-weight: 600 !important; border-radius: 6px; padding: 9px 20px !important; border: 1px solid rgba(255,255,255,0.15) !important; transition: all 0.2s !important; }
+    .nav-contact-btn:hover { background: rgba(255,255,255,0.16) !important; color: #fff !important; }
+    .nav-item { position: relative; display: inline-block; }
+    .nav-item > a { color: rgba(255,255,255,0.72); font-size:14px; font-weight:500; padding:8px 15px; border-radius:6px; transition:color 0.2s,background 0.2s; text-decoration:none; }
+    .nav-item > a:hover { color: var(--blue); background: rgba(29,161,242,0.08); }
+    .dropdown-menu { display: none; position: absolute; top: calc(100% + 8px); left: 0; background: rgba(7,28,44,0.97); backdrop-filter: blur(14px); border: 1px solid rgba(29,161,242,0.2); border-radius: 8px; padding: 6px; min-width: 160px; z-index: 200; box-shadow: 0 12px 32px rgba(0,0,0,0.4); }
+    .nav-item:hover .dropdown-menu { display: block; }
+    .dropdown-menu a { display:block; padding:9px 14px; border-radius:6px; color:rgba(255,255,255,0.72); font-size:14px; font-weight:500; text-decoration:none; transition:color 0.2s,background 0.2s; }
+    .dropdown-menu a:hover { color:var(--blue); background:rgba(29,161,242,0.08); }
+    .nav-phone-highlight { display: flex; align-items: center; gap: 6px; background: linear-gradient(135deg, rgba(29,161,242,0.25), rgba(13,126,196,0.2)); border: 1px solid rgba(29,161,242,0.5); border-radius: 24px; padding: 7px 16px; box-shadow: 0 0 14px rgba(29,161,242,0.25), inset 0 1px 0 rgba(255,255,255,0.08); animation: phonePulse 3s ease-in-out infinite; }
+    .nav-phone-highlight a { font-size:13px; font-weight:700; color:#fff; letter-spacing:0.03em; }
+    .nav-phone-highlight .phone-icon { font-size:14px; animation: phoneBounce 2.5s ease-in-out infinite; }
+    @keyframes phonePulse { 0%,100%{box-shadow:0 0 14px rgba(29,161,242,0.25),inset 0 1px 0 rgba(255,255,255,0.08);} 50%{box-shadow:0 0 24px rgba(29,161,242,0.5),inset 0 1px 0 rgba(255,255,255,0.08);} }
+    @keyframes phoneBounce { 0%,100%{transform:rotate(0deg);} 25%{transform:rotate(-12deg);} 75%{transform:rotate(12deg);} }
+
+    /* ── HERO ── */
+    .hero { background: linear-gradient(135deg, var(--navy-dark) 0%, #0a2540 60%, #0d3a6b 100%); padding: 140px 2rem 80px; text-align: center; position: relative; overflow: hidden; }
+    .hero::before { content:''; position:absolute; inset:0; background: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(29,161,242,0.15), transparent); }
+    .hero::after { content:''; position:absolute; inset:0; opacity:0.05; background-image: radial-gradient(circle, rgba(255,255,255,0.9) 1px, transparent 1px); background-size: 36px 36px; pointer-events: none; }
+    .hero-label { display: inline-block; background: rgba(29,161,242,0.15); color: var(--blue); border: 1px solid rgba(29,161,242,0.3); border-radius: 20px; padding: 6px 18px; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.2rem; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5vw, 3.8rem); color: var(--white); line-height: 1.15; margin-bottom: 1.2rem; }
+    .hero h1 em { color: var(--blue); font-style: italic; }
+    .hero p { font-size: 1rem; color: rgba(255,255,255,0.7); max-width: 600px; margin: 0 auto 2rem; line-height: 1.75; }
+    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: var(--blue); color: #fff; font-weight: 600; font-size: 15px; padding: 14px 28px; border-radius: var(--radius); border: none; cursor: pointer; transition: all 0.2s; text-decoration: none; box-shadow: var(--shadow-md); font-family: 'Sora', sans-serif; }
+    .btn-primary:hover { background: var(--blue-dark); transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+    .btn-outline { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: #fff; font-weight: 500; font-size: 15px; padding: 13px 28px; border-radius: var(--radius); border: 1px solid rgba(255,255,255,0.22); cursor: pointer; transition: all 0.2s; text-decoration: none; font-family: 'Sora', sans-serif; }
+    .btn-outline:hover { border-color: var(--blue); color: var(--blue); background: rgba(29,161,242,0.07); }
+    .hero-stats { display: flex; justify-content: center; gap: 3rem; margin-top: 3rem; flex-wrap: wrap; }
+    .hero-stat { text-align: center; }
+    .hero-stat-val { font-size: 2rem; font-weight: 700; color: var(--blue); font-family: 'Playfair Display', serif; }
+    .hero-stat-label { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 2px; letter-spacing: 0.03em; }
+
+    /* ── GENERAL ── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
+    .section { padding: 5rem 0; }
+    .section-label { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.7rem; display: flex; align-items: center; gap: 8px; }
+    .section-label::before { content:''; display:block; width:24px; height:2px; background:var(--blue); border-radius:2px; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: clamp(1.7rem, 2.8vw, 2.5rem); color: var(--navy); margin-bottom: 1rem; line-height: 1.2; }
+    .section-sub { color: var(--text-mid); font-size: 16px; max-width: 560px; line-height: 1.75; margin-bottom: 2.5rem; }
+    .title-center { text-align: center; }
+    .title-center .section-label { justify-content: center; }
+    .title-center .section-sub { margin: 0 auto 2.5rem; }
+
+    /* ── STOCK SEARCH (moved up, now section 2) ── */
+    .stock-section { background: var(--off-white); }
+    .exchange-tabs { display: flex; gap: 8px; margin-bottom: 1.5rem; }
+    .exch-btn { padding: 9px 28px; border-radius: 8px; border: 2px solid var(--gray-200); background: var(--white); font-weight: 600; font-size: 14px; cursor: pointer; transition: all 0.2s; color: var(--text-muted); font-family: 'Sora', sans-serif; }
+    .exch-btn.active { background: var(--blue); color: #fff; border-color: var(--blue); }
+    .search-wrap { position: relative; max-width: 520px; margin-bottom: 1.5rem; }
+    .search-wrap input { width: 100%; padding: 13px 18px 13px 46px; border-radius: 10px; border: 2px solid var(--gray-200); font-size: 15px; font-family: 'Sora', sans-serif; background: var(--white); outline: none; transition: border-color 0.2s; }
+    .search-wrap input:focus { border-color: var(--blue); }
+    .search-wrap .search-icon { position:absolute; left:15px; top:50%; transform:translateY(-50%); font-size:18px; color:var(--text-muted); }
+    .stock-results { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap: 1rem; }
+    .stock-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 12px; padding: 1rem 1.2rem; cursor: pointer; position: relative; transition: box-shadow 0.2s, border-color 0.2s; overflow: visible; }
+    .stock-card:hover { box-shadow: 0 6px 20px rgba(13,126,196,0.15); border-color: var(--blue); z-index: 10; }
+    .stock-header { display: flex; justify-content: space-between; align-items: flex-start; }
+    .stock-sym { font-weight: 700; font-size: 15px; color: var(--navy); }
+    .stock-name { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+    .stock-price { text-align: right; }
+    .stock-price-val { font-weight: 700; font-size: 16px; color: var(--navy); }
+    .stock-chg { font-size: 12px; font-weight: 600; margin-top: 2px; }
+    .up { color: var(--green); } .dn { color: var(--red); } .fl { color: var(--text-muted); }
+    .chart-popup { display: none; position: absolute; z-index: 9999; left: 50%; top: calc(100% + 10px); transform: translateX(-50%); width: 400px; background: var(--white); border: 1px solid var(--gray-200); border-radius: 12px; box-shadow: 0 16px 48px rgba(0,0,0,0.18); overflow: hidden; }
+    .stock-card:hover .chart-popup { display: block; }
+    .chart-popup-header { background: var(--navy); color: #fff; padding: 10px 14px; font-size: 13px; font-weight: 600; font-family: 'Sora', sans-serif; }
+    .stock-loading { text-align: center; padding: 2rem; color: var(--text-muted); font-size: 14px; }
+    .no-results { color: var(--text-muted); font-size: 14px; padding: 1rem 0; }
+
+    /* ── WHY EQUITY (now section 3) ── */
+    .why-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 1.2rem; }
+    .why-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 1.8rem 1.5rem; text-align: center; transition: box-shadow 0.2s, transform 0.2s; }
+    .why-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); }
+    .why-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+    .why-card h3 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 0.5rem; font-family: 'Sora', sans-serif; }
+    .why-card p { font-size: 14px; color: var(--text-mid); line-height: 1.7; }
+
+    /* ── OFFER SECTION ── */
+    .offer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 1.4rem; }
+    .offer-card { background: var(--navy); border-radius: var(--radius-lg); padding: 2rem 1.8rem; position: relative; overflow: hidden; transition: transform 0.2s, box-shadow 0.2s; display: flex; flex-direction: column; }
+    .offer-card::before { content:''; position:absolute; top:-40px; right:-40px; width:120px; height:120px; border-radius:50%; background: rgba(29,161,242,0.08); }
+    .offer-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+    .offer-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .offer-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--white); margin-bottom: 0.6rem; font-family: 'Sora', sans-serif; }
+    .offer-card p { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.7; flex: 1; }
+    .offer-tag { display: inline-block; margin-top: 1.4rem; background: rgba(29,161,242,0.15); color: var(--blue); border-radius: 20px; padding: 11px 24px; font-size: 13px; font-weight: 600; font-family: 'Sora', sans-serif; cursor: pointer; transition: background 0.2s, transform 0.2s; text-decoration: none; align-self: flex-start; border: 1px solid rgba(29,161,242,0.3); }
+    .offer-tag:hover { background: rgba(29,161,242,0.3); transform: translateY(-1px); }
+
+    /* ── IPO SECTION ── */
+.ipo-widget-wrap {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+    /* ── NEWS ── */
+    .news-section { background: var(--off-white); }
+    .news-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
+    @media(max-width:900px){ .news-grid { grid-template-columns: repeat(2,1fr); } }
+    @media(max-width:600px){ .news-grid { grid-template-columns: 1fr; } }
+    .news-timestamp { font-size: 11px; color: var(--text-muted); }
+    .news-refresh-btn { font-size: 12px; font-weight: 600; color: var(--blue); background: rgba(29,161,242,0.08); border: 1px solid rgba(29,161,242,0.3); border-radius: 6px; padding: 6px 14px; cursor: pointer; transition: all 0.2s; font-family: 'Sora', sans-serif; }
+    .news-refresh-btn:hover { background: rgba(29,161,242,0.18); }
+    .news-header-row { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 1.5rem; flex-wrap: wrap; gap: 1rem; }
+
+    /* ── FAQ ── */
+    .faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.8rem; }
+    .faq-item { border: 1px solid var(--gray-200); border-radius: 10px; overflow: hidden; }
+    .faq-btn { width: 100%; text-align: left; padding: 1.1rem 1.4rem; background: var(--white); border: none; font-size: 15px; font-weight: 600; color: var(--navy); cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: background 0.2s; font-family: 'Sora', sans-serif; }
+    .faq-btn:hover { background: var(--off-white); }
+    .faq-btn .faq-arrow { font-size: 18px; transition: transform 0.3s; flex-shrink: 0; margin-left: 1rem; }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+    .faq-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .faq-item.open .faq-body { max-height: 300px; }
+    .faq-body p { padding: 0 1.4rem 1.2rem; font-size: 14px; color: var(--text-mid); line-height: 1.75; font-family: 'Sora', sans-serif; }
+
+    /* ── CTA BANNER ── */
+    .cta-banner { background: linear-gradient(135deg, var(--navy) 0%, #0a3060 100%); padding: 4rem 2rem; text-align: center; }
+    .cta-banner h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.7rem, 2.8vw, 2.4rem); color: #fff; margin-bottom: 0.8rem; line-height: 1.2; }
+    .cta-banner p { color: rgba(255,255,255,0.65); font-size: 16px; margin-bottom: 2rem; line-height: 1.75; font-family: 'Sora', sans-serif; }
+
+    /* ── FOOTER ── */
+    footer { background: var(--navy-dark); color: rgba(255,255,255,0.55); padding: 3rem 2rem 1.5rem; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 2rem; margin-bottom: 2rem; }
+    @media(max-width:768px){ .footer-grid { grid-template-columns: 1fr 1fr; } }
+    .footer-brand p { font-size: 13px; line-height: 1.7; margin-top: 0.8rem; max-width: 260px; }
+    .footer-col h4 { color: #fff; font-size: 13px; font-weight: 700; margin-bottom: 1rem; letter-spacing: 0.05em; text-transform: uppercase; }
+    .footer-col a { display: block; font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--blue); }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.08); padding-top: 1.2rem; display: flex; justify-content: space-between; align-items: center; font-size: 12px; flex-wrap: wrap; gap: 0.5rem; }
+    .footer-bottom a { color: rgba(255,255,255,0.4); }
+    .footer-bottom a:hover { color: var(--blue); }
+    .reg-badges { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1rem; }
+    .reg-badge { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 4px 10px; font-size: 11px; color: rgba(255,255,255,0.5); }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── DISCLAIMER ── */
+    .disclaimer { background: #FFF8E1; border-left: 4px solid var(--gold); border-radius: 8px; padding: 1.2rem 1.6rem; font-size: 13px; color: #5a4400; line-height: 1.6; margin-top: 2rem; }
+
+.stock-toggle-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid var(--blue);
+  background: rgba(29,161,242,0.08);
+  color: var(--blue);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s ease;
+  box-shadow: 0 2px 12px rgba(29,161,242,0.15);
+}
+.stock-toggle-btn:hover {
+  background: rgba(29,161,242,0.18);
+  transform: scale(1.1);
+  box-shadow: 0 4px 18px rgba(29,161,242,0.25);
+
+
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">
+      <img src="logo.png" alt="eNivesh Financial Services" onerror="this.style.display='none';this.parentNode.innerHTML='<span style=\'color:#fff;font-weight:700;font-size:18px;\'>eNivesh</span>'">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="nav-item">
+        <a href="index.html#services">Services</a>
+        <div class="dropdown-menu">
+          <a href="equity.html">Equity</a>
+          <a href="mutual-funds.html">Mutual Funds</a>
+          <a href="loan.html">Loans</a>
+        </div>
+      </li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#pricing">Plans</a></li>
+      <li><a href="index.html#faq">FAQ</a></li>
+      <li><a href="enivesh-contact.html" class="nav-contact-btn">Contact Us</a></li>
+      <li><a href="enivesh-contact.html" class="nav-cta">Book Appointment</a></li>
+    </ul>
+    <div class="nav-phone-highlight">
+      <span class="phone-icon">📞</span>
+      <a href="tel:+919031831828">+91-9031831828</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero" id="top">
+  <div class="container" style="position:relative;z-index:1;">
+    <div class="hero-label">Equity Investments</div>
+    <h1>Invest in <em>India's Growth</em><br>with Expert Guidance</h1>
+    <p>Research-backed stock picks, IPO access, and portfolio management — everything you need to build lasting wealth in Indian equity markets.</p>
+    <div class="hero-btns">
+      <a href="enivesh-contact.html" class="btn-primary">📅 Book Free Consultation</a>
+     <a href="https://iiflcs.in/IILLTD/i3Xbx" target="_blank" rel="noopener" class="btn-outline" style="background:linear-gradient(135deg,#FF6B2B,#e05520);color:#fff;border-color:#FF6B2B;">🚀 Open Free Demat Account</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="hero-stat-val">20+</div><div class="hero-stat-label">Years Experience</div></div>
+      <div class="hero-stat"><div class="hero-stat-val">700+</div><div class="hero-stat-label">Clients Served</div></div>
+      <div class="hero-stat"><div class="hero-stat-val">₹50Cr+</div><div class="hero-stat-label">Assets Managed</div></div>
+      <div class="hero-stat"><div class="hero-stat-val">BSE+NSE</div><div class="hero-stat-label">Both Exchanges</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SECTION 1: WHY EQUITY ── -->
+<section class="section" id="why">
+  <div class="container">
+    <div class="title-center reveal">
+      <div class="section-label">Why Invest in Equity</div>
+      <h2 class="section-title">Build Real Wealth Over Time</h2>
+      <p class="section-sub">Equity investments have historically outperformed all other asset classes over the long term in India.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card reveal"><div class="why-icon">📈</div><h3>Superior Returns</h3><p>Nifty 50 has delivered ~15% CAGR over 25 years — far outpacing FD, gold, and real estate.</p></div>
+      <div class="why-card reveal" style="transition-delay:0.08s"><div class="why-icon">🛡️</div><h3>Beat Inflation</h3><p>Inflation erodes money in savings accounts. Equities grow faster than inflation, preserving purchasing power.</p></div>
+      <div class="why-card reveal" style="transition-delay:0.16s"><div class="why-icon">💰</div><h3>Dividend Income</h3><p>Many Indian blue-chip companies pay regular dividends, creating a passive income stream alongside capital gains.</p></div>
+      <div class="why-card reveal" style="transition-delay:0.24s"><div class="why-icon">🔄</div><h3>High Liquidity</h3><p>Unlike real estate or FDs, stocks can be bought and sold instantly during market hours on BSE and NSE.</p></div>
+      <div class="why-card reveal" style="transition-delay:0.32s"><div class="why-icon">⚡</div><h3>Power of Compounding</h3><p>Start early and let compounding do the heavy lifting — ₹1 lakh grows to ₹16+ lakhs in 20 years at 15% CAGR.</p></div>
+      <div class="why-card reveal" style="transition-delay:0.40s"><div class="why-icon">🌐</div><h3>Ownership in Growth</h3><p>When you buy a stock, you own a piece of India's best companies and share in their profits and growth.</p></div>
+    </div>
+    <div class="disclaimer reveal">
+      ⚠️ <strong>Risk Disclaimer:</strong> Equity investments are subject to market risks. Past performance is not indicative of future returns. Please read all scheme-related documents carefully before investing.
+    </div>
+  </div>
+</section>
+
+<!-- ── SECTION 2: LIVE STOCK SEARCH ── -->
+<section class="section stock-section" id="stocks">
+  <div class="container">
+    <div class="reveal" style="margin-bottom:1.5rem;">
+      <div class="section-label">Live Market Data</div>
+      <h2 class="section-title">Search Live Stock Prices</h2>
+      <p class="section-sub">Search any stock on NSE or BSE. Hover over a card to see the live price chart.</p>
+    </div>
+    <div class="exchange-tabs reveal">
+      <button class="exch-btn active" onclick="switchExchange('NSE',this)">NSE</button>
+      <button class="exch-btn" onclick="switchExchange('BSE',this)">BSE</button>
+    </div>
+    <div class="search-wrap reveal">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="stockSearch" placeholder="Search stocks e.g. Reliance, TCS, HDFC..." oninput="filterStocks()">
+    </div>
+    <div class="stock-results" id="stockResults">
+      <div class="stock-loading">⏳ Loading live stock prices…</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SECTION 3: WHAT WE OFFER ── -->
+<section class="section" style="background:var(--navy-dark);" id="services">
+  <div class="container">
+    <div class="title-center reveal" style="color:#fff;">
+      <div class="section-label">Our Equity Services</div>
+      <h2 class="section-title" style="color:#fff;">What We Offer</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.6);">End-to-end equity solutions — from research to execution to monitoring.</p>
+    </div>
+    <div class="offer-grid">
+      <div class="offer-card reveal">
+        <div class="offer-icon">🔬</div>
+        <h3>Research-Backed Stock Advisory</h3>
+        <p>Our analysts study fundamentals, technicals, and sector trends to recommend stocks with strong growth potential.</p>
+        <a href="#stocks" class="offer-tag">View Live Prices →</a>
+      </div>
+      <div class="offer-card reveal" style="transition-delay:0.1s">
+        <div class="offer-icon">📊</div>
+        <h3>Portfolio Construction</h3>
+        <p>We build a diversified equity portfolio aligned with your risk profile, time horizon, and financial goals.</p>
+        <a href="enivesh-contact.html" class="offer-tag">Talk to an Advisor →</a>
+      </div>
+      <div class="offer-card reveal" style="transition-delay:0.2s">
+        <div class="offer-icon">🏛️</div>
+        <h3>IPO Applications</h3>
+        <p>Get early access to IPOs. We identify high-quality issues, handle your application, and maximise allotment chances.</p>
+        <a href="#ipo" class="offer-tag">View IPO Calendar →</a>
+      </div>
+      <div class="offer-card reveal" style="transition-delay:0.3s">
+        <div class="offer-icon">⚖️</div>
+        <h3>Portfolio Review & Rebalancing</h3>
+        <p>Regular reviews of your holdings to cut losers, book profits, and rebalance in line with market conditions.</p>
+        <a href="enivesh-contact.html" class="offer-tag">Book a Review →</a>
+      </div>
+      <div class="offer-card reveal" style="transition-delay:0.4s">
+        <div class="offer-icon">💼</div>
+        <h3>PMS — Portfolio Management</h3>
+        <p>Dedicated investment manager, bespoke portfolio, and regular performance reporting for HNI investors.</p>
+        <a href="enivesh-contact.html" class="offer-tag">Enquire for PMS →</a>
+      </div>
+      <div class="offer-card reveal" style="transition-delay:0.5s">
+        <div class="offer-icon">📱</div>
+        <h3>Demat Account Opening</h3>
+        <p>Open a free Demat + trading account instantly with our partner broker — paperless KYC, zero maintenance fee.</p>
+        <a href="https://iiflcs.in/IILLTD/i3Xbx" target="_blank" rel="noopener" class="offer-tag">Open Free Demat →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ── SECTION 4: IPO CALENDAR ── -->
+<section class="section" style="background:var(--navy);" id="ipo">
+  <div class="container">
+
+    <div class="title-center reveal" style="color:#fff;margin-bottom:1.5rem;">
+      <div class="section-label">Live IPO Calendar</div>
+      <h2 class="section-title" style="color:#fff;">Current & Upcoming IPOs</h2>
+      <p class="section-sub" style="color:rgba(255,255,255,0.6);">Track open and upcoming IPOs, GMP, price bands, and key dates — all in one place.</p>
+    </div>
+
+    <div class="ipo-widget-wrap" id="ipo-list-wrap">
+      <div id="ipo-list">
+        <p style="color:var(--text-muted)">Loading IPOs...</p>
+      </div>
+    </div>
+
+    <!-- IPO Info Cards -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0.75rem;margin-top:1.5rem;" class="reveal">
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:1rem 1.1rem;display:flex;gap:0.9rem;align-items:flex-start;">
+        <div style="font-size:1.3rem;flex-shrink:0;margin-top:2px;">🏛️</div>
+        <div>
+          <div style="font-size:0.8rem;font-weight:700;font-family:'Sora',sans-serif;color:#ffffff;margin-bottom:0.25rem;">How to Apply for IPOs</div>
+          <div style="font-size:11.5px;color:rgba(255,255,255,0.75);line-height:1.6;">Apply via Demat using ASBA or UPI. Our advisors guide every step to maximise allotment chances.</div>
+        </div>
+      </div>
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:1rem 1.1rem;display:flex;gap:0.9rem;align-items:flex-start;">
+        <div style="font-size:1.3rem;flex-shrink:0;margin-top:2px;">📋</div>
+        <div>
+          <div style="font-size:0.8rem;font-weight:700;font-family:'Sora',sans-serif;color:#ffffff;margin-bottom:0.25rem;">IPO Research Reports</div>
+          <div style="font-size:11.5px;color:rgba(255,255,255,0.75);line-height:1.6;">We analyse GMP, financials, promoter background &amp; sector outlook for every IPO.</div>
+        </div>
+      </div>
+      <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:10px;padding:1rem 1.1rem;display:flex;gap:0.9rem;align-items:flex-start;">
+        <div style="font-size:1.3rem;flex-shrink:0;margin-top:2px;">⚡</div>
+        <div>
+          <div style="font-size:0.8rem;font-weight:700;font-family:'Sora',sans-serif;color:#ffffff;margin-bottom:0.25rem;">Priority Allotment Tips</div>
+          <div style="font-size:11.5px;color:rgba(255,255,255,0.75);line-height:1.6;">Apply early, use multiple family Demat accounts, follow cut-off price strategy.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:1.5rem;" class="reveal">
+      <a href="enivesh-contact.html"
+        style="display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#FF6B2B,#e05520);color:#fff;font-weight:600;font-size:14px;padding:13px 26px;border-radius:8px;text-decoration:none;box-shadow:0 4px 18px rgba(255,107,43,0.35);transition:all 0.2s;font-family:'Sora',sans-serif;"
+        onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 8px 28px rgba(255,107,43,0.45)'"
+        onmouseout="this.style.transform='';this.style.boxShadow='0 4px 18px rgba(255,107,43,0.35)'">
+        📋 Apply for IPO — Contact Our Advisor
+      </a>
+    </div>
+
+  </div>
+</section>
+<!-- ── SECTION 5: EQUITY NEWS ── -->
+<section class="section news-section" id="news">
+  <div class="container">
+    <div class="news-header-row reveal">
+      <div>
+        <div class="section-label">Equity News</div>
+        <h2 class="section-title">Latest Market &amp; Stock News</h2>
+        <p class="section-sub" style="margin-bottom:0;">Stay updated with live equity and market news from India.</p>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span id="eqNewsTimestamp" class="news-timestamp"></span>
+        <button class="news-refresh-btn" onclick="fetchEquityNews()">⟳ Refresh</button>
+      </div>
+    </div>
+
+    <!-- Dynamic news cards (loaded via JS fallback feeds) -->
+    <div id="eqNewsGrid" class="news-grid">
+      <div style="grid-column:1/-1;text-align:center;padding:2rem;color:var(--text-muted);font-size:14px;" id="eqNewsLoading">Loading latest news…</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SECTION 6: FAQ ── -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="title-center reveal" style="margin-bottom:2rem;">
+      <div class="section-label">Common Questions</div>
+      <h2 class="section-title">Equity FAQs</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <button class="faq-btn" onclick="this.closest('.faq-item').classList.toggle('open')">What is the minimum amount to start investing in equity? <span class="faq-arrow">▾</span></button>
+        <div class="faq-body"><p>You can start investing in direct stocks with as little as ₹5,000. There is no minimum for most stocks — you can buy even a single share of any listed company on NSE or BSE.</p></div>
+      </div>
+      <div class="faq-item reveal" style="transition-delay:0.05s">
+        <button class="faq-btn" onclick="this.closest('.faq-item').classList.toggle('open')">How does eNivesh pick stocks for clients? <span class="faq-arrow">▾</span></button>
+        <div class="faq-body"><p>Our research team analyses company fundamentals (P/E ratio, earnings growth, debt levels), technical charts, sector tailwinds, and management quality before recommending any stock. We avoid speculative picks and focus on quality businesses with strong moats.</p></div>
+      </div>
+      <div class="faq-item reveal" style="transition-delay:0.1s">
+        <button class="faq-btn" onclick="this.closest('.faq-item').classList.toggle('open')">Is equity investment risky? <span class="faq-arrow">▾</span></button>
+        <div class="faq-body"><p>Yes, equity carries market risk and prices can fall in the short term. However, over a long horizon (5+ years), equities have consistently outperformed all other asset classes in India. Diversification and a disciplined approach significantly reduce risk.</p></div>
+      </div>
+      <div class="faq-item reveal" style="transition-delay:0.15s">
+        <button class="faq-btn" onclick="this.closest('.faq-item').classList.toggle('open')">Do I need a Demat account to invest in stocks? <span class="faq-arrow">▾</span></button>
+        <div class="faq-body"><p>Yes. A Demat + trading account is mandatory to buy or sell shares on NSE or BSE. eNivesh helps you open one for free with our partner broker — paperless, instant KYC, zero annual maintenance charge.</p></div>
+      </div>
+      <div class="faq-item reveal" style="transition-delay:0.2s">
+        <button class="faq-btn" onclick="this.closest('.faq-item').classList.toggle('open')">How are IPO allotments decided? <span class="faq-arrow">▾</span></button>
+        <div class="faq-body"><p>IPO allotments are done by lottery for retail investors. Applying from multiple Demat accounts (via family members) increases your probability of allotment. Our advisors guide you on which IPOs are worth applying for and how to maximise your chances.</p></div>
+      </div>
+      <div class="faq-item reveal" style="transition-delay:0.25s">
+        <button class="faq-btn" onclick="this.closest('.faq-item').classList.toggle('open')">What taxes apply on equity investments? <span class="faq-arrow">▾</span></button>
+        <div class="faq-body"><p>Short-term capital gains (held less than 1 year) are taxed at 20%. Long-term capital gains above ₹1.25 lakh per year are taxed at 12.5% with no indexation. Dividends are added to your income and taxed at your applicable slab rate.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CTA BANNER ── -->
+<section class="cta-banner">
+  <div class="container">
+    <h2>Ready to Start Your Equity Journey?</h2>
+    <p>Book a free consultation with our expert advisors today. No obligation, just clarity.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+      <a href="enivesh-contact.html" class="btn-primary">📅 Book Free Consultation</a>
+      <a href="https://iiflcs.in/IILLTD/i3Xbx" target="_blank" rel="noopener" class="btn-outline">🚀 Open Free Demat Account</a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" style="color:#fff;font-size:20px;font-weight:700;font-family:'Sora',sans-serif;">eNivesh Financial Services</a>
+        <p>Your trusted investment partner since 2006. SEBI registered, AMFI certified, serving clients across Bihar and beyond.</p>
+        <div class="reg-badges">
+          <span class="reg-badge">SEBI</span><span class="reg-badge">AMFI</span><span class="reg-badge">IRDAI</span><span class="reg-badge">BSE</span><span class="reg-badge">NSE</span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="equity.html">Equity</a>
+        <a href="mutual-funds.html">Mutual Funds</a>
+        <a href="loan.html">Loans</a>
+        <a href="index.html#services">Insurance</a>
+        <a href="index.html#services">PMS / AIF</a>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="index.html#about">About Us</a>
+        <a href="index.html#pricing">Plans & Pricing</a>
+        <a href="index.html#faq">FAQ</a>
+        <a href="enivesh-contact.html">Contact Us</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:+919031831828">📞 +91-9031831828</a>
+        <a href="mailto:info@enivesh.in">✉️ info@enivesh.in</a>
+        <a href="#">📍 Bailey Road, Patna 800014</a>
+        <a href="privacy-policy.html">Privacy Policy</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 eNivesh Financial Services. All rights reserved.</span>
+      <span>AMFI Registered Mutual Fund Distributor | SEBI Registered Investment Advisor</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+
+
+// ── REVEAL ON SCROLL ──
+document.addEventListener('DOMContentLoaded', function() {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+});
+
+// ============================================================
+//  ENIVESH — Stocks Engine v2
+//  Strategy:
+//   1. Show cached data instantly (sessionStorage)
+//   2. Fetch ALL stocks in parallel (Promise.all)
+//   3. Try 3 proxies — use whichever wins (race)
+//   4. Render as each stock resolves (progressive)
+//   5. Fall back gracefully if everything fails
+// ============================================================
+
+var currentExchange = 'NSE';
+var stockCache = {};
+var showAllStocks = false;
+
+var NSE_STOCKS = [
+  {sym:'RELIANCE.NS', name:'Reliance Industries'},
+  {sym:'HDFCBANK.NS', name:'HDFC Bank'},
+  {sym:'ICICIBANK.NS', name:'ICICI Bank'},
+  {sym:'TCS.NS', name:'Tata Consultancy Services'},
+  {sym:'INFY.NS', name:'Infosys'},
+  {sym:'BHARTIARTL.NS', name:'Bharti Airtel'},
+  {sym:'SBIN.NS', name:'State Bank of India'},
+  {sym:'HINDUNILVR.NS', name:'Hindustan Unilever'},
+  {sym:'ITC.NS', name:'ITC'},
+  {sym:'LT.NS', name:'Larsen & Toubro'},
+  {sym:'KOTAKBANK.NS', name:'Kotak Mahindra Bank'},
+  {sym:'AXISBANK.NS', name:'Axis Bank'},
+  {sym:'BAJFINANCE.NS', name:'Bajaj Finance'},
+  {sym:'MARUTI.NS', name:'Maruti Suzuki'},
+  {sym:'TITAN.NS', name:'Titan Company'},
+  {sym:'SUNPHARMA.NS', name:'Sun Pharmaceutical'},
+  {sym:'WIPRO.NS', name:'Wipro'},
+  {sym:'ULTRACEMCO.NS', name:'UltraTech Cement'},
+  {sym:'ADANIENT.NS', name:'Adani Enterprises'},
+  {sym:'HCLTECH.NS', name:'HCL Technologies'},
+  {sym:'TATAMOTORS.NS', name:'Tata Motors'},
+  {sym:'NTPC.NS', name:'NTPC'},
+  {sym:'POWERGRID.NS', name:'Power Grid Corp'},
+  {sym:'JSWSTEEL.NS', name:'JSW Steel'},
+  {sym:'ASIANPAINT.NS', name:'Asian Paints'},
+  {sym:'BAJAJFINSV.NS', name:'Bajaj Finserv'},
+  {sym:'NESTLEIND.NS', name:'Nestle India'},
+  {sym:'TATACONSUM.NS', name:'Tata Consumer'},
+  {sym:'INDUSINDBK.NS', name:'IndusInd Bank'},
+  {sym:'BEL.NS', name:'Bharat Electronics'},
+];
+
+var BSE_STOCKS = [
+  {sym:'RELIANCE.BO', name:'Reliance Industries'},
+  {sym:'HDFCBANK.BO', name:'HDFC Bank'},
+  {sym:'ICICIBANK.BO', name:'ICICI Bank'},
+  {sym:'TCS.BO', name:'Tata Consultancy Services'},
+  {sym:'INFY.BO', name:'Infosys'},
+  {sym:'BHARTIARTL.BO', name:'Bharti Airtel'},
+  {sym:'SBIN.BO', name:'State Bank of India'},
+  {sym:'HINDUNILVR.BO', name:'Hindustan Unilever'},
+  {sym:'ITC.BO', name:'ITC'},
+  {sym:'LT.BO', name:'Larsen & Toubro'},
+  {sym:'KOTAKBANK.BO', name:'Kotak Mahindra Bank'},
+  {sym:'AXISBANK.BO', name:'Axis Bank'},
+  {sym:'BAJFINANCE.BO', name:'Bajaj Finance'},
+  {sym:'MARUTI.BO', name:'Maruti Suzuki'},
+  {sym:'TITAN.BO', name:'Titan Company'},
+  {sym:'SUNPHARMA.BO', name:'Sun Pharmaceutical'},
+  {sym:'WIPRO.BO', name:'Wipro'},
+  {sym:'ULTRACEMCO.BO', name:'UltraTech Cement'},
+  {sym:'ADANIENT.BO', name:'Adani Enterprises'},
+  {sym:'HCLTECH.BO', name:'HCL Technologies'},
+];
+
+var allStocks = {NSE: NSE_STOCKS, BSE: BSE_STOCKS};
+var filteredStocks = NSE_STOCKS.slice();
+
+// ── Cache helpers ────────────────────────────────────────────
+var CACHE_KEY  = 'enivesh_stock_cache';
+var CACHE_TIME = 'enivesh_stock_time';
+var CACHE_TTL  = 1 * 60 * 1000; // 1 minutes
+var renderTimer = null
+
+function saveCache() {
+  try {
+    sessionStorage.setItem(CACHE_KEY, JSON.stringify(stockCache));
+    sessionStorage.setItem(CACHE_TIME, Date.now().toString());
+  } catch(e) {}
+}
+
+function loadCache() {
+  try {
+    var t = sessionStorage.getItem(CACHE_TIME);
+    if (t && (Date.now() - parseInt(t)) < CACHE_TTL) {
+      var c = sessionStorage.getItem(CACHE_KEY);
+      if (c) return JSON.parse(c);
+    }
+  } catch(e) {}
+  return null;
+}
+
+// ── Proxy list — tried in parallel, fastest wins ─────────────
+var PROXIES = [
+  function(url) {
+    return 'https://corsproxy.io/?' + encodeURIComponent(url);
+  },
+  function(url) {
+    return 'https://api.allorigins.win/get?url=' + encodeURIComponent(url);
+  },
+  function(url) {
+    return 'https://thingproxy.freeboard.io/fetch/' + url;
+  }
+];
+
+// ADD THIS NEW FUNCTION here, before fetchViaProxy
+function fetchWithTimeout(url, ms) {
+  ms = ms || 4000;
+  var controller = new AbortController();
+  var timer = setTimeout(function() { controller.abort(); }, ms);
+  return fetch(url, { cache: 'no-store', signal: controller.signal })
+    .finally(function() { clearTimeout(timer); });
+}
+
+// Fetch via a specific proxy, normalise the response
+function fetchViaProxy(proxyFn, url) {
+return fetchWithTimeout(proxyFn(url))
+    .then(function(r) {
+      if (!r.ok) throw new Error('bad status ' + r.status);
+      return r.json();
+    })
+    .then(function(data) {
+      // allorigins wraps in {contents:'...'}
+      if (typeof data.contents === 'string') return JSON.parse(data.contents);
+      // corsproxy / thingproxy return raw JSON
+      return data;
+    });
+}
+
+// Race all proxies — return whichever resolves first with valid data
+function fetchWithFallback(url) {
+  return Promise.any(
+    PROXIES.map(function(p) { return fetchViaProxy(p, url); })
+  );
+}
+
+// ── Parse Yahoo Finance v8 response ─────────────────────────
+function parseV8(data) {
+  var m = data && data.chart && data.chart.result &&
+          data.chart.result[0] && data.chart.result[0].meta;
+  if (!m) return null;
+  return {
+    price: m.regularMarketPrice || m.chartPreviousClose || m.previousClose,
+    prev:  m.chartPreviousClose || m.previousClose,
+    name:  m.longName || m.shortName || ''
+  };
+}
+
+// ── Fetch a single stock via v8 (reliable endpoint) ─────────
+function fetchSingleStock(sym) {
+  var url = 'https://query1.finance.yahoo.com/v8/finance/chart/'
+    + encodeURIComponent(sym)
+    + '?interval=1d&range=1d&t=' + Date.now();
+
+  // Try direct first (fastest, sometimes works without proxy)
+  return fetchWithTimeout(url)
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      var parsed = parseV8(data);
+      if (!parsed) throw new Error('no data');
+      return parsed;
+    })
+    .catch(function() {
+      // Direct blocked — race through proxies
+      return fetchWithFallback(url).then(parseV8);
+    });
+}
+
+// ── Load all stocks in parallel, render progressively ────────
+function scheduleRender() {
+  clearTimeout(renderTimer);
+  renderTimer = setTimeout(renderStocks, 80);
+}
+
+function fetchBatch(symbols) {
+  var joined = symbols.map(encodeURIComponent).join('%2C');
+  var url = 'https://query1.finance.yahoo.com/v8/finance/spark?symbols=' + joined + '&range=1d&interval=1d&t=' + Date.now();
+  return fetchWithTimeout(url)
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      var results = {};
+      var items = data && data.spark && data.spark.result;
+      if (!items) return results;
+      items.forEach(function(item) {
+        if (!item || !item.response || !item.response[0]) return;
+        var meta = item.response[0].meta;
+        if (!meta) return;
+        results[item.symbol] = {
+          price: meta.regularMarketPrice || meta.chartPreviousClose || meta.previousClose,
+          prev:  meta.chartPreviousClose || meta.previousClose,
+          name:  meta.longName || meta.shortName || ''
+        };
+      });
+      return results;
+    })
+    .catch(function() {
+      return fetchWithFallback(url).then(function(data) {
+        var results = {};
+        var items = data && data.spark && data.spark.result;
+        if (!items) return results;
+        items.forEach(function(item) {
+          if (!item || !item.response || !item.response[0]) return;
+          var meta = item.response[0].meta;
+          if (!meta) return;
+          results[item.symbol] = {
+            price: meta.regularMarketPrice || meta.chartPreviousClose || meta.previousClose,
+            prev:  meta.chartPreviousClose || meta.previousClose,
+            name:  meta.longName || meta.shortName || ''
+          };
+        });
+        return results;
+      });
+    });
+}
+
+async function loadStockPrices(list) {
+  var cached = loadCache();
+  if (cached) {
+    Object.assign(stockCache, cached);
+    renderStocks();
+  }
+  var batchSize = 10;
+  for (var i = 0; i < list.length; i += batchSize) {
+    var batch = list.slice(i, i + batchSize);
+    var symbols = batch.map(function(s) { return s.sym; });
+    try {
+      var results = await fetchBatch(symbols);
+      Object.keys(results).forEach(function(sym) {
+        var d = results[sym];
+        if (d) {
+          stockCache[sym] = {
+            price: d.price,
+            prev:  d.prev,
+            name:  d.name || (list.find(function(s) { return s.sym === sym; }) || {}).name || sym
+          };
+        }
+      });
+      scheduleRender();
+    } catch(e) {}
+  }
+  saveCache();
+  renderStocks();
+}
+// ── Exchange switching ────────────────────────────────────────
+function switchExchange(exch, btn) {
+  showAllStocks = false;
+  currentExchange = exch;
+  document.querySelectorAll('.exch-btn').forEach(function(b) {
+    b.classList.remove('active');
+  });
+  btn.classList.add('active');
+  document.getElementById('stockSearch').value = '';
+  filteredStocks = allStocks[exch].slice();
+  renderStocks();
+  loadStockPrices(allStocks[exch]);
+}
+
+// ── Search ───────────────────────────────────────────────────
+function filterStocks() {
+  showAllStocks = false;
+  var q = document.getElementById('stockSearch').value.toLowerCase().trim();
+  var list = allStocks[currentExchange];
+  filteredStocks = q
+    ? list.filter(function(s) {
+        return s.sym.toLowerCase().includes(q) || s.name.toLowerCase().includes(q);
+      })
+    : list.slice();
+
+  if (q && filteredStocks.length === 0) {
+    searchDynamicStock(q);
+  } else {
+    renderStocks();
+  }
+}
+
+async function searchDynamicStock(q) {
+  var grid = document.getElementById('stockResults');
+  grid.innerHTML = '<div class="stock-loading">🔍 Searching for "' + q.toUpperCase() + '"…</div>';
+
+  var suffix = currentExchange === 'NSE' ? '.NS' : '.BO';
+  var sym = q.toUpperCase() + suffix;
+
+  var d = await fetchSingleStock(sym).catch(function() { return null; });
+  if (d) {
+    stockCache[sym] = d;
+    filteredStocks = [{sym: sym, name: d.name || sym}];
+    renderStocks();
+  } else {
+    grid.innerHTML = '<p class="no-results">No stock found for "'
+      + q.toUpperCase() + '". Please check the symbol and try again.</p>';
+  }
+}
+
+// ── Helpers ──────────────────────────────────────────────────
+function getTVSymbol(sym) {
+  if (sym.endsWith('.NS')) return 'NSE:' + sym.replace('.NS','');
+  if (sym.endsWith('.BO')) return 'NSE:' + sym.replace('.BO','');
+  return sym;
+}
+
+function fmt(n, d) {
+  if (n == null || isNaN(n)) return '—';
+  d = d == null ? 2 : d;
+  return n.toLocaleString('en-IN', {minimumFractionDigits: d, maximumFractionDigits: d});
+}
+function dir(c) { return c > 0 ? 'up' : c < 0 ? 'dn' : 'fl'; }
+function arr(c) { return c > 0 ? '▲' : c < 0 ? '▼' : '●'; }
+function sign(c) { return c >= 0 ? '+' : ''; }
+
+// ── Render ───────────────────────────────────────────────────
+function renderStocks() {
+  var grid = document.getElementById('stockResults');
+  if (!filteredStocks.length) {
+    grid.innerHTML = '<p class="no-results">No stocks found matching your search.</p>';
+    return;
+  }
+
+  var displayList = showAllStocks ? filteredStocks : filteredStocks.slice(0, 9);
+  var hasMore = filteredStocks.length > 9;
+
+  var html = displayList.map(function(s) {
+    var d = stockCache[s.sym];
+    var chg = d ? d.price - d.prev : 0;
+    var pct = d && d.prev ? chg / d.prev * 100 : null;
+    var priceHtml = d && d.price && d.prev
+  ? '<div class="stock-price-val">₹' + fmt(d.price) + '</div>'
+    + '<div class="stock-chg ' + dir(chg) + '">'
+    + arr(chg) + ' ' + sign(chg) + fmt(Math.abs(chg))
+    + ' (' + sign(chg) + fmt(Math.abs(pct)) + '%)</div>'
+  : d && d.price
+    ? '<div class="stock-price-val">₹' + fmt(d.price) + '</div>'
+      + '<div class="stock-chg fl">● —</div>'
+    : '<div class="stock-price-val" style="color:var(--text-muted)">Loading…</div>';
+    var tvSym = getTVSymbol(s.sym);
+    var cardBg = d && d.price && d.prev
+  ? (chg > 0 ? 'background:rgba(0,200,100,0.06);' : chg < 0 ? 'background:rgba(255,60,60,0.06);' : '')
+  : '';
+    return '<div class="stock-card"'
+      + ' onclick="window.open(\'https://www.tradingview.com/chart/?symbol=' + tvSym + '\',\'_blank\')"'
+      + ' style="cursor:pointer;transition:background 0.2s;' + cardBg + '"'
+      + ' onmouseover="this.style.background=\'rgba(29,161,242,0.07)\'"'
+      + ' onmouseout="this.style.background=\'\'">'
+      + '<div class="stock-header">'
+      + '<div>'
+      + '<div class="stock-sym">' + s.sym.replace(/\.(NS|BO)$/, '') + '</div>'
+      + '<div class="stock-name">' + s.name + '</div>'
+      + '</div>'
+      + '<div class="stock-price">' + priceHtml + '</div>'
+      + '</div>'
+      + '</div>';
+  }).join('');
+
+  if (hasMore) {
+    if (!showAllStocks) {
+      html += '<div style="grid-column:1/-1;display:flex;justify-content:center;align-items:center;padding:20px 0;width:100%;">'
+        + '<button onclick="expandStocks()" class="stock-toggle-btn" title="Show all stocks">'
+        + '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>'
+        + '</button></div>';
+    } else {
+      html += '<div style="grid-column:1/-1;display:flex;justify-content:center;align-items:center;padding:20px 0;width:100%;">'
+        + '<button onclick="collapseStocks()" class="stock-toggle-btn" title="Show less">'
+        + '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>'
+        + '</button></div>';
+    }
+  }
+
+  grid.innerHTML = html;
+}
+
+function expandStocks()  { showAllStocks = true;  renderStocks(); }
+function collapseStocks(){ showAllStocks = false; renderStocks(); }
+
+
+////////////
+async function fetchIPOCalendar() {
+  var url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTifJ1mJbVoajZDQlG8JWYRoli1t98Z6itTQv0T01ATBv4lDcLDFbt3p6-YmlwtnVkZbhjlB5yzTrhA/pub?output=csv';
+  var container = document.getElementById('ipo-list');
+  if (!container) return;
+  try {
+    var res = await fetch(url);
+    var text = await res.text();
+    var rows = text.trim().split('\n').slice(1).filter(function(r){ return r.trim(); });
+    if (!rows.length) { container.innerHTML = '<p style="color:#fff">No IPOs found.</p>'; return; }
+
+    function parseCSVRow(row) {
+      var result = [];
+      var current = '';
+      var inQuotes = false;
+      for (var i = 0; i < row.length; i++) {
+        var ch = row[i];
+        if (ch === '"') { inQuotes = !inQuotes; }
+        else if (ch === ',' && !inQuotes) { result.push(current.trim()); current = ''; }
+        else { current += ch; }
+      }
+      result.push(current.trim());
+      return result;
+    }
+
+    var cards = rows.map(function(row) {
+      var cols = parseCSVRow(row);
+      var name      = cols[0] || '';
+      var openDate  = cols[1] || '';
+      var closeDate = cols[2] || '';
+      var price     = cols[3] || '';
+      var gmp       = cols[4] || '';
+      var status    = (cols[5] || '').trim();
+      var badgeColor = status === 'Open' ? '#22c55e' : status === 'Upcoming' ? '#f59e0b' : '#6b7280';
+      var gmpColor   = gmp.startsWith('-') ? '#ef4444' : '#22c55e';
+
+      return '<div style="'
+        + 'min-width:270px;max-width:270px;flex-shrink:0;'
+        + 'background:linear-gradient(135deg,#0d2137,#0f3566);'
+        + 'border:1px solid rgba(99,179,237,0.2);'
+        + 'border-radius:16px;padding:1.3rem 1.4rem;'
+        + 'box-shadow:0 4px 20px rgba(0,0,0,0.4);'
+        + '">'
+        // Header
+        + '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;gap:8px;">'
+        + '<div style="font-size:0.95rem;font-weight:800;font-family:Sora,sans-serif;color:#ffffff;line-height:1.3;">' + name + '</div>'
+        + '<span style="background:' + badgeColor + ';color:#fff;font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;white-space:nowrap;flex-shrink:0;">' + status + '</span>'
+        + '</div>'
+        // Grid of 4 fields
+        + '<div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">'
+        // Open
+        + '<div>'
+        + '<div style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:3px;">Open</div>'
+        + '<div style="font-size:12.5px;font-weight:600;color:#e2e8f0;">' + openDate + '</div>'
+        + '</div>'
+        // Close
+        + '<div>'
+        + '<div style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:3px;">Close</div>'
+        + '<div style="font-size:12.5px;font-weight:600;color:#e2e8f0;">' + closeDate + '</div>'
+        + '</div>'
+        // Price
+        + '<div>'
+        + '<div style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:3px;">Price</div>'
+        + '<div style="font-size:14px;font-weight:800;color:#ffffff;font-family:Sora,sans-serif;">' + price + '</div>'
+        + '</div>'
+        // GMP
+        + '<div>'
+        + '<div style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:3px;">GMP</div>'
+        + '<div style="font-size:14px;font-weight:800;color:' + gmpColor + ';font-family:Sora,sans-serif;">' + gmp + '</div>'
+        + '</div>'
+        + '</div>'
+        + '</div>';
+    }).join('');
+
+// Inject keyframe once
+    if (!document.getElementById('ipo-style')) {
+      var styleTag = document.createElement('style');
+      styleTag.id = 'ipo-style';
+      styleTag.textContent = `
+        @keyframes ipoScroll {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+        #ipo-track {
+          display: flex !important;
+          flex-direction: row !important;
+          gap: 16px;
+          width: max-content;
+          animation: ipoScroll 30s linear infinite;
+          will-change: transform;
+        }
+        #ipo-track:hover {
+          animation-play-state: paused;
+        }
+        #ipo-list {
+          overflow: hidden !important;
+          width: 100% !important;
+          display: block !important;
+        }
+      `;
+      document.head.appendChild(styleTag);
+    }
+
+    container.removeAttribute('style');
+    container.innerHTML = '<div id="ipo-track">' + cards + cards + '</div>';
+	  
+  } catch(e) {
+    container.innerHTML = '<p style="color:rgba(255,255,255,0.5)">Unable to load IPO data.</p>';
+  }
+}
+
+// ── Init ─────────────────────────────────────────────────────
+(function init() {
+  // Load cache immediately so page isn't blank
+  var cached = loadCache();
+  if (cached) Object.assign(stockCache, cached);
+  filteredStocks = NSE_STOCKS.slice();
+  renderStocks();
+  loadStockPrices(NSE_STOCKS);
+})();
+
+  // ── INIT ──
+  document.addEventListener('DOMContentLoaded', function() {
+    loadStockPrices(NSE_STOCKS);
+         loadStockPrices(allStocks['BSE']);
+    fetchIPOCalendar();
+    fetchEquityNews();
+    setInterval(fetchEquityNews, 1800000);
+    setInterval(function() { loadStockPrices(allStocks[currentExchange]); }, 300000);
+  });
+	
+async function fetchEquityNews() {
+  const grid = document.getElementById('eqNewsGrid');
+  const loading = document.getElementById('eqNewsLoading');
+  const timestamp = document.getElementById('eqNewsTimestamp');
+
+  const RSS_FEEDS = [
+    'https://economictimes.indiatimes.com/markets/stocks/rssfeeds/2146842.cms',
+    'https://feeds.feedburner.com/ndtvprofit-latest',
+    'https://www.thehindu.com/business/markets/feeder/default.rss',
+    'https://www.thehindu.com/business/feeder/default.rss',
+  ];
+
+  const PROXY = 'https://api.rss2json.com/v1/api.json?rss_url=';
+
+  try {
+    if (loading) loading.textContent = 'Loading latest news…';
+
+    const results = await Promise.allSettled(
+      RSS_FEEDS.map(feed =>
+        fetch(PROXY + encodeURIComponent(feed)).then(r => r.json())
+      )
+    );
+
+    let items = [];
+    results.forEach(r => {
+      if (r.status === 'fulfilled' && r.value.items) {
+        items = items.concat(r.value.items);
+      }
+    });
+
+    if (items.length === 0) throw new Error('No items');
+
+    // Deduplicate by title, take first 9
+    const seen = new Set();
+    const unique = items.filter(item => {
+      if (seen.has(item.title)) return false;
+      seen.add(item.title);
+      return true;
+    }).slice(0, 9);
+
+    if (loading) loading.remove();
+
+    const now = new Date();
+    if (timestamp) timestamp.textContent = `Refreshed ${now.toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'})} ${now.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'})}`;
+
+    grid.innerHTML = unique.map(item => {
+      const source = new URL(item.link).hostname.replace('www.','');
+      const date = item.pubDate ? new Date(item.pubDate).toLocaleDateString('en-IN',{day:'numeric',month:'short'}) : '';
+      return `
+        <a href="${item.link}" target="_blank" rel="noopener noreferrer"
+          style="background:#fff;border:1px solid var(--gray-200);border-radius:12px;padding:1.2rem 1.3rem;text-decoration:none;display:flex;flex-direction:column;gap:8px;transition:box-shadow 0.2s,transform 0.2s;"
+          onmouseover="this.style.boxShadow='0 6px 24px rgba(13,126,196,0.13)';this.style.transform='translateY(-3px)';"
+          onmouseout="this.style.boxShadow='none';this.style.transform='translateY(0)';">
+          <span style="font-size:13px;font-weight:600;color:var(--navy);line-height:1.5;">${item.title}</span>
+          <span style="font-size:11px;color:var(--text-muted);margin-top:auto;display:flex;justify-content:space-between;">
+            <span>📰 ${source}</span><span>${date}</span>
+          </span>
+        </a>`;
+    }).join('');
+
+  } catch(e) {
+    if (loading) loading.textContent = 'Could not load news. Please try again later.';
+    console.error('News fetch failed:', e);
+  }
+}
+</script>
+</body>
+</html>
